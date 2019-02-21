@@ -1,7 +1,10 @@
 import React from 'react'
 import App, { Container } from 'next/app'
+import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 import theme from '../lib/theme'
+import Layout from '../components/Layout'
+import SuisseIntl from '../static/fonts/SuisseIntl'
 
 class MyApp extends App {
 	static async getInitialProps({ Component, ctx }) {
@@ -18,11 +21,13 @@ class MyApp extends App {
 		const { Component, pageProps } = this.props
 		return (
 			<Container>
-				<div className="what">
-					<ThemeProvider theme={theme}>
+				<Head />
+				<SuisseIntl />
+				<ThemeProvider theme={theme}>
+					<Layout>
 						<Component {...pageProps} />
-					</ThemeProvider>
-				</div>
+					</Layout>
+				</ThemeProvider>
 			</Container>
 		)
 	}

@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import styles from './styles'
 
 const variantMapping = {
 	h1: 'h1',
@@ -14,7 +16,13 @@ const variantMapping = {
 	body2: 'p',
 }
 
-const Typography = ({ type }) => {}
+const Typography = ({ type, children }) => {
+	const Component = styled(variantMapping[type])`
+		${styles[type]};
+	`
+
+	return <Component> {children} </Component>
+}
 
 Typography.defaultProps = {
 	type: 'body1',
@@ -41,3 +49,5 @@ Typography.propTypes = {
 	]),
 	align: PropTypes.oneOf(['left', 'center', 'right', 'inherit']),
 }
+
+export default Typography
