@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from '../lib/theme'
 import Layout from '../components/Layout'
 import SuisseIntl from '../static/fonts/SuisseIntl'
+import GlobalStyle from '../lib/theme/GlobalStyle'
 
 class MyApp extends App {
 	static async getInitialProps({ Component, ctx }) {
@@ -23,6 +24,7 @@ class MyApp extends App {
 			<Container>
 				<Head />
 				<SuisseIntl />
+				<GlobalStyle />
 				<ThemeProvider theme={theme}>
 					<Layout>
 						<Component {...pageProps} />

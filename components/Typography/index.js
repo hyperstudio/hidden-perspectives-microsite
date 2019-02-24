@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import styles from './styles'
+import { space, textAlign } from 'styled-system'
 
 const variantMapping = {
 	h1: 'h1',
@@ -16,12 +17,15 @@ const variantMapping = {
 	body2: 'p',
 }
 
-const Typography = ({ type, children }) => {
-	const Component = styled(variantMapping[type])`
+const Typography = ({ type, children, ...props }) => {
+	const tag = variantMapping[type] || 'p'
+	const Component = styled(tag)`
 		${styles[type]};
+		${space};
+		${textAlign};
 	`
 
-	return <Component> {children} </Component>
+	return <Component {...props}> {children} </Component>
 }
 
 Typography.defaultProps = {
