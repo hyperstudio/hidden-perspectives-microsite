@@ -4,7 +4,9 @@ import Typography from '../components/Typography'
 import Link from '../components/Typography/Link'
 import OuterRow from '../components/Layout/OuterRow'
 import { space } from 'styled-system'
-import Feature from '../components/_project/home/Feature'
+// import Feature from '../components/_project/home/Feature'
+import Features from '../components/_project/home/Features'
+import Footer from '../components/_project/home/Footer'
 import { dark } from '../lib/theme'
 
 const Wrapper = styled('div')`
@@ -26,7 +28,7 @@ const HeaderWraper = styled('div')`
 const FeatureWrapper = styled('div')`
 	background: #141214;
 	width: 100%;
-	padding: 80px 0;
+	padding: 80px 0 0;
 	margin-top: 160px;
 `
 
@@ -106,14 +108,15 @@ const Index = ({}) => {
 				</Typography>
 			</OuterRow>
 			<ThemeProvider theme={dark}>
-				<FeatureWrapper>
-					<Typography type="h2" textAlign={'center'} pt={4}>
-						The App
-					</Typography>
-					{features.map(feature => (
-						<Feature {...feature} />
-					))}
-				</FeatureWrapper>
+				<React.Fragment>
+					<FeatureWrapper>
+						<Typography type="h2" textAlign={'center'} pt={4}>
+							The App
+						</Typography>
+						<Features />
+						<Footer />
+					</FeatureWrapper>
+				</React.Fragment>
 			</ThemeProvider>
 		</Wrapper>
 	)

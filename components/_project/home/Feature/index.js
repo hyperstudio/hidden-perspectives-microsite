@@ -7,7 +7,9 @@ import OuterRow from '../../../Layout/OuterRow'
 import Typography from '../../../Typography'
 
 const Wrapper = styled('div')`
-	width: 100%;
+	width: 60vw;
+	padding: 40px;
+	margin: 0 auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -23,7 +25,7 @@ const VideoWrapper = styled('div')`
 const Feature = ({ label, videoSrc, padding }) => {
 	return (
 		<Wrapper pb={[5]} pt={padding}>
-			<OuterRow rowWidth={'narrow'}>
+			<OuterRow rowWidth={'narrow'} style={{ height: '120px' }}>
 				<Typography type="h4" color={'#fff'} textAlign={'center'}>
 					{label}
 				</Typography>

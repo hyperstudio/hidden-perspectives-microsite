@@ -22,7 +22,14 @@ class MyApp extends App {
 		const { Component, pageProps } = this.props
 		return (
 			<Container>
-				<Head />
+				<Head>
+					<link
+						rel="stylesheet"
+						type="text/css"
+						charset="UTF-8"
+						href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+					/>
+				</Head>
 				<SuisseIntl />
 				<GlobalStyle />
 				<ThemeProvider theme={theme}>
