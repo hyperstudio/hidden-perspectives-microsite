@@ -20,16 +20,14 @@ const Wrapper = styled('div')`
 const VideoWrapper = styled('div')`
 	background: white;
 	padding-bottom: 56.25%;
+	box-shadow: ${props => props.theme.shadow[14]};
 `
 
 const Feature = ({ label, videoSrc, padding }) => {
+	const [header, text] = label.split('– ')
+	console.log(header)
 	return (
 		<Wrapper pb={[5]} pt={padding}>
-			<OuterRow rowWidth={'narrow'} style={{ height: '120px' }}>
-				<Typography type="h4" color={'#fff'} textAlign={'center'}>
-					{label}
-				</Typography>
-			</OuterRow>
 			<OuterRow rowWidth={'wide'}>
 				<VideoWrapper />
 			</OuterRow>

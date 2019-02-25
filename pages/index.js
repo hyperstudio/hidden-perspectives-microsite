@@ -110,9 +110,6 @@ const Index = ({}) => {
 			<ThemeProvider theme={dark}>
 				<React.Fragment>
 					<FeatureWrapper>
-						<Typography type="h2" textAlign={'center'} pt={4}>
-							The App
-						</Typography>
 						<Features />
 						<Footer />
 					</FeatureWrapper>

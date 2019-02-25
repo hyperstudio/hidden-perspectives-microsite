@@ -4,7 +4,9 @@ import OuterRow from '../../../Layout/OuterRow'
 import Typography from '../../../Typography'
 import { space } from 'styled-system'
 
-const Section = styled('div')``
+const Section = styled('div')`
+	width: 50%;
+`
 
 const Wrapper = styled('div')`
 	border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -18,8 +20,6 @@ const Wrapper = styled('div')`
 const OuterWrapper = styled(OuterRow)`
 	display: flex;
 	flex-direction: row;
-	flex-grow: 1;
-	flex-shrink: 1;
 `
 
 const Footer = () => {

@@ -15,17 +15,24 @@ const Avatar = styled('img')`
 	border-radius: 100%;
 `
 
+const AvatarPlaceHolder = styled('div')`
+	background: rgba(255, 255, 255, 0.1);
+	width: 80px;
+	height: 80px;
+	border-radius: 100%;
+`
+
 const TextWrapper = styled('div')`
 	display: flex;
 `
 
-const Person = ({ name, role, imgSrc }) => {
+const Person = ({ name, label, imgSrc }) => {
 	return (
 		<Wrapper>
-			<Avatar src={imgSrc} />
+			<AvatarPlaceHolder />
 			<TextWrapper>
 				<Typography>{name}</Typography>
-				{role && <Typography>{role}</Typography>}
+				{label && <Typography>{label}</Typography>}
 			</TextWrapper>
 		</Wrapper>
 	)
