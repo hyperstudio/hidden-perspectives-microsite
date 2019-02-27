@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import styles from './styles'
 import { space, textAlign } from 'styled-system'
 
@@ -15,14 +15,19 @@ const variantMapping = {
 	subtitle2: 'h6',
 	body1: 'p',
 	body2: 'p',
+	button: 'span',
 }
 
-const Typography = ({ type, children, ...props }) => {
+const Typography = ({ type, children, color, ...props }) => {
 	const tag = variantMapping[type] || 'p'
 	const Component = styled(tag)`
 		${styles[type]};
 		${space};
 		${textAlign};
+		${color &&
+			css`
+				color: ${props => props.theme.color[color]};
+			`}
 	`
 
 	return <Component {...props}> {children} </Component>

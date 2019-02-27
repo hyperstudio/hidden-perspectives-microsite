@@ -81,7 +81,7 @@ export const body1 = css`
 
 export const body2 = css`
 	${base};
-	line-height: 16px;
+	line-height: 24px;
 	font-size: 15px;
 	letter-spacing: 0.35px;
 `
@@ -91,14 +91,18 @@ export const caption = css`
 	line-height: 16px;
 	font-size: 12px;
 	letter-spacing: 0.35px;
+	opacity: 0.55;
 `
 
 export const button = css`
 	${base};
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 16px;
 	font-size: 14px;
-	letter-spacing: 0.55px;
+	text-transform: uppercase;
+	letter-spacing: 0.65px;
+	margin: 0;
+	padding: 0;
 `
 
 export default {

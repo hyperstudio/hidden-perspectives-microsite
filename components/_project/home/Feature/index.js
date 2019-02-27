@@ -25,7 +25,6 @@ const VideoWrapper = styled('div')`
 
 const Feature = ({ label, videoSrc, padding }) => {
 	const [header, text] = label.split('– ')
-	console.log(header)
 	return (
 		<Wrapper pb={[5]} pt={padding}>
 			<OuterRow rowWidth={'wide'}>

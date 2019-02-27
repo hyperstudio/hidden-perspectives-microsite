@@ -3,9 +3,14 @@ import styled from 'styled-components'
 import OuterRow from '../../../Layout/OuterRow'
 import Typography from '../../../Typography'
 import { space } from 'styled-system'
+import Persons, { students, initiators } from './Persons'
+import Logo from './Logo'
 
 const Section = styled('div')`
 	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 `
 
 const Wrapper = styled('div')`
@@ -22,24 +27,32 @@ const OuterWrapper = styled(OuterRow)`
 	flex-direction: row;
 `
 
+const LogoWrapper = styled('div')`
+	bottom: 0;
+	padding-left: 4px;
+	padding-bottom: 4px;
+`
+
 const Footer = () => {
 	return (
 		<Wrapper py={[6, 6, 6]}>
 			<OuterWrapper rowWidth={'wide'}>
 				<Section>
-					<Typography>
-						This project was initiated by John Tirman, Malcolm Byrne and Hussein Banai
-						at the MIT Center for International Studies and Kurt Fendt at MIT
-						Hyperstudio.
+					<Typography type={'body2'}>
+						This project was initiated by:
+						<Persons persons={initiators} />
 					</Typography>
+					<LogoWrapper>
+						<Logo />
+					</LogoWrapper>
 				</Section>
 				<Section>
-					<Typography>
-						In close collaboration, this platform was designed and realized between
-						December ’18 and February ‘19 by Lucas Vogel, Florian Zia, Bela Kurek,
-						Ludwig Frank, and Joshua Pacheco, students of the University of Applied
-						Sciences Potsdam.
+					<Typography type={'body2'}>
+						In close collaboration, this platform was designed, concepted and realized
+						between December ’18 and February ‘19 by students of the University of
+						Applied Sciences Potsdam:
 					</Typography>
+					<Persons persons={students} />
 				</Section>
 			</OuterWrapper>
 		</Wrapper>
