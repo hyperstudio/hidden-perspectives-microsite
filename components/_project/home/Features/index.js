@@ -61,7 +61,7 @@ const Features = ({ features = featureData }) => {
 		</OuterRow>,
 		<Slider key="slider" {...sliderSettings} afterChange={index => setCount(index)}>
 			{features.map(feature => {
-				return <Feature {...feature} />
+				return <Feature {...feature} featureId={feature.key} />
 			})}
 		</Slider>,
 	]

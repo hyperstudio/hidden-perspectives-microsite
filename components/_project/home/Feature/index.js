@@ -21,14 +21,23 @@ const VideoWrapper = styled('div')`
 	background: white;
 	padding-bottom: 56.25%;
 	box-shadow: ${props => props.theme.shadow[14]};
+	position: relative;
 `
 
-const Feature = ({ label, videoSrc, padding }) => {
-	const [header, text] = label.split('– ')
+const Img = styled('img')`
+	width: 100%;
+	position: absolute;
+`
+
+const Feature = ({ label, videoSrc, padding, featureId }) => {
+	const src = `https://res.cloudinary.com/podocu/image/upload/v1551389306/university/hidden_perspectives/${featureId}.png`
+
 	return (
 		<Wrapper pb={[5]} pt={padding}>
 			<OuterRow rowWidth={'wide'}>
-				<VideoWrapper />
+				<VideoWrapper>
+					<Img src={src} />
+				</VideoWrapper>
 			</OuterRow>
 		</Wrapper>
 	)

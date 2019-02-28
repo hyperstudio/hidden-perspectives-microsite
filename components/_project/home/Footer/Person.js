@@ -18,12 +18,6 @@ const Wrapper = styled('a')`
 	}
 `
 
-const Avatar = styled('img')`
-	width: 80px;
-	height: 80px;
-	border-radius: 100%;
-`
-
 const AvatarPlaceHolder = styled('img')`
 	background: rgba(255, 255, 255, 0.1);
 	width: 56px;

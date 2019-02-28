@@ -5,15 +5,15 @@ export default [
 		label: `Understand the chronology of events, documents and the involvement of protagonists.`,
 	},
 	{
-		key: 'featureoriginaldocuments',
-		header: 'Original Documents',
-		label: 'Study scans and transcripts of all primary sources.',
-	},
-	{
 		key: 'featureconnections',
 		header: 'Connections',
 		label:
 			'Investigate links within the large network of documents, events, and protagonists..',
+	},
+	{
+		key: 'featureoriginaldocuments',
+		header: 'Original Documents',
+		label: 'Study scans and transcripts of all primary sources.',
 	},
 	{
 		key: 'featurecontext',
