@@ -18,6 +18,7 @@ const sliderSettings = {
 	className: 'react-slick-active-class',
 	autoplay: true,
 	autoplaySpeed: 4000,
+	pauseOnFocus: false,
 }
 
 const FeatureTextWrapper = styled(animated.div)`
@@ -60,8 +61,8 @@ const Features = ({ features = featureData }) => {
 			<FeatureText {...features[count]} />
 		</OuterRow>,
 		<Slider key="slider" {...sliderSettings} afterChange={index => setCount(index)}>
-			{features.map(feature => {
-				return <Feature {...feature} featureId={feature.key} />
+			{features.map((feature, index) => {
+				return <Feature {...feature} featureId={feature.key} active={index === count} />
 			})}
 		</Slider>,
 	]

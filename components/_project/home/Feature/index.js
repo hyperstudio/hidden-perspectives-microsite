@@ -19,7 +19,7 @@ const Wrapper = styled('div')`
 
 const VideoWrapper = styled('div')`
 	background: white;
-	padding-bottom: 56.25%;
+	padding-bottom: 62.5%;
 	box-shadow: ${props => props.theme.shadow[14]};
 	position: relative;
 `
@@ -29,14 +29,14 @@ const Img = styled('img')`
 	position: absolute;
 `
 
-const Feature = ({ label, videoSrc, padding, featureId }) => {
-	const src = `https://res.cloudinary.com/podocu/image/upload/v1551389306/university/hidden_perspectives/${featureId}.png`
+const Feature = ({ label, videoSrc, padding, featureId, gif, active }) => {
+	const src = `https://res.cloudinary.com/podocu/image/upload/dpr_2.0,f_auto,q_80/v1551389306/university/hidden_perspectives/${featureId}.png`
 
 	return (
 		<Wrapper pb={[5]} pt={padding}>
 			<OuterRow rowWidth={'wide'}>
 				<VideoWrapper>
-					<Img src={src} />
+					<Img src={gif} />
 				</VideoWrapper>
 			</OuterRow>
 		</Wrapper>

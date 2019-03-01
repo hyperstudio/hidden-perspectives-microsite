@@ -1,23 +1,27 @@
 export default [
 	{
 		name: 'John Tirman',
-		organization: 'MIT Center for International Studies',
+		organization: 'Executive Director & Principle Research Scientist at MIT CIS',
 		url: 'http://cis.mit.edu/people/john-tirman',
+		role: 'initiator',
 	},
 	{
 		name: 'Malcom Byrne',
-		organization: 'MIT Center for International Studies',
+		organization: 'Deputy Director and Director of Research at the National Security Archive',
 		url: 'https://nsarchive.gwu.edu/about/staff/malcolm-byrne',
+		role: 'initiator',
 	},
 	{
 		name: 'Hussein Banai',
-		organization: 'MIT Center for International Studies',
+		organization: 'Assistant Professor at Indiana University',
 		url: 'http://www.indiana.edu/~intlweb/people/facprofile/hbanai.shtml',
+		role: 'initiator',
 	},
 	{
 		name: 'Kurt Fendt',
-		organization: 'MIT Hyperstudio',
+		organization: 'Executive Director of MIT Hyperstudio',
 		url: 'https://cmsw.mit.edu/profile/kurt-fendt/',
+		role: 'initiator',
 	},
 	{
 		name: 'Lucas Vogel',

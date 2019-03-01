@@ -10,7 +10,7 @@ const Section = styled('div')`
 	width: 50%;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	position: relative;
 `
 
 const Wrapper = styled('div')`
@@ -31,6 +31,8 @@ const LogoWrapper = styled('div')`
 	bottom: 0;
 	padding-left: 4px;
 	padding-bottom: 4px;
+	justify-self: flex-end;
+	position: absolute;
 `
 
 const Footer = () => {
@@ -38,10 +40,8 @@ const Footer = () => {
 		<Wrapper py={[6, 6, 6]}>
 			<OuterWrapper rowWidth={'wide'}>
 				<Section>
-					<Typography type={'body2'}>
-						This project was initiated by:
-						<Persons persons={initiators} />
-					</Typography>
+					<Typography type={'body2'}>This project was initiated by:</Typography>
+					<Persons persons={initiators} />
 					<LogoWrapper>
 						<Logo />
 					</LogoWrapper>

@@ -43,7 +43,7 @@ const Person = ({ name, label, organization, role, url }) => {
 				<Typography m={0} mt={'-1px'} type={'body2'}>
 					{name}
 				</Typography>
-				{organization && (
+				{organization && role === 'initiator' && (
 					<Typography mt={0} mb={0} type={'caption'}>
 						{organization}
 					</Typography>

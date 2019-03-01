@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import Person from './Person'
 import data from './data'
@@ -16,18 +17,23 @@ const alphabeticalSort = (arr, sortBy) => {
 	})
 }
 
-export const students = alphabeticalSort(data.filter(person => person.role), 'name')
+export const students = alphabeticalSort(data.filter(person => person.role !== 'initiator'), 'name')
 
-console.log(students)
 export const initiators = alphabeticalSort(
-	data.filter(person => person.organization.includes('MIT')),
+	data.filter(person => person.role === 'initiator'),
 	'name'
 )
 
+const Wrapper = styled('div')``
+
 const Persons = ({ persons }) => {
-	return persons.map(person => {
-		return <Person {...person} />
-	})
+	return (
+		<Wrapper>
+			{persons.map(person => {
+				return <Person {...person} />
+			})}
+		</Wrapper>
+	)
 }
 
 export default Persons
