@@ -18,7 +18,7 @@ const sliderSettings = {
 	className: 'react-slick-active-class',
 	autoplay: true,
 	autoplaySpeed: 4000,
-	pauseOnFocus: false,
+	pauseOnHover: false,
 }
 
 const FeatureTextWrapper = styled(animated.div)`
