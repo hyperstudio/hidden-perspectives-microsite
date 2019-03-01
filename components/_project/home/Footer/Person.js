@@ -35,7 +35,7 @@ const Person = ({ name, label, organization, role, url }) => {
 	const imgSrc = `https://res.cloudinary.com/podocu/image/upload/v1551281230/university/hidden_perspectives/persons/${name.replace(
 		' ',
 		''
-	)}.jpg`
+	)}.png`
 	return (
 		<Wrapper href={url} target="_blank">
 			<AvatarPlaceHolder src={imgSrc} />
