@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { space } from 'styled-system'
 
 import OuterRow from '../../../Layout/OuterRow'
-import Typography from '../../../Typography'
+import { media } from '../../../../lib'
 
 const Wrapper = styled('div')`
 	width: 60vw;
@@ -15,6 +15,11 @@ const Wrapper = styled('div')`
 	align-items: center;
 	flex-direction: column;
 	${space};
+	${media.xs`
+		width: 80vw;
+		padding: 8px;
+		padding-top: 80px;
+	`};
 `
 
 const VideoWrapper = styled('div')`
@@ -29,12 +34,12 @@ const Img = styled('img')`
 	position: absolute;
 `
 
-const Feature = ({ label, videoSrc, padding, featureId, gif, active }) => {
+const Feature = ({ label, videoSrc, padding, featureId, gif, active, onClick }) => {
 	const src = `https://res.cloudinary.com/podocu/image/upload/dpr_2.0,f_auto,q_80/v1551389306/university/hidden_perspectives/${featureId}.png`
 
 	return (
-		<Wrapper pb={[5]} pt={padding}>
-			<OuterRow rowWidth={'wide'}>
+		<Wrapper pb={[5, 2]} pt={padding} onClick={onClick}>
+			<OuterRow rowWidth={'wide'} style={{ width: '100%', padding: 0 }}>
 				<VideoWrapper>
 					<Img src={gif} />
 				</VideoWrapper>

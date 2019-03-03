@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import { textAlign } from 'styled-system'
+import { media } from '../../lib'
 
 export const base = css`
 	color: ${props => props.theme.color.typoPrimary};
@@ -17,6 +18,9 @@ export const h1 = css`
 	font-size: 48px;
 	letter-spacing: -1px;
 	font-weight: 400;
+	${media.xs`
+		font-size: 40px;
+	`}
 `
 
 export const h2 = css`
@@ -24,12 +28,20 @@ export const h2 = css`
 	line-height: 16px;
 	font-size: 36px;
 	letter-spacing: -0.5px;
+	${media.xs`
+		font-size: 32px;
+		line-height: 32px;
+	`}
 `
 
 export const h3 = css`
 	${base};
 	line-height: 38px;
 	font-size: 28px;
+	${media.xs`
+		font-size: 24px;
+		line-height: 32px;
+	`}
 `
 
 export const h4 = css`
@@ -38,6 +50,9 @@ export const h4 = css`
 	color: ${props => props.theme.color.typoPrimary};
 	font-size: 24px;
 	letter-spacing: 0.25px;
+	${media.xs`
+		font-size: 20px;
+	`}
 `
 
 export const h5 = css`
@@ -45,6 +60,9 @@ export const h5 = css`
 	line-height: 26px;
 	font-size: 22px;
 	letter-spacing: 0.25px;
+	${media.xs`
+		font-size: 18px;
+	`}
 `
 
 export const h6 = css`
@@ -77,6 +95,10 @@ export const body1 = css`
 	line-height: 28px;
 	font-size: 18px;
 	letter-spacing: 0.35px;
+	${media.xs`
+		font-size: 16px;
+		line-height: 26px;
+	`}
 `
 
 export const body2 = css`

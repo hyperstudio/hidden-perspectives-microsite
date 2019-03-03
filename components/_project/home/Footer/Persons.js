@@ -30,7 +30,7 @@ const Persons = ({ persons }) => {
 	return (
 		<Wrapper>
 			{persons.map(person => {
-				return <Person {...person} />
+				return <Person {...person} key={person.name} />
 			})}
 		</Wrapper>
 	)

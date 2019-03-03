@@ -29,6 +29,12 @@ class MyApp extends App {
 						charset="UTF-8"
 						href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
 					/>
+					<title> Hidden Perspectives </title>
+					<meta
+						name="viewport"
+						content="initial-scale=1.0, width=device-width"
+						key="viewport"
+					/>
 				</Head>
 				<SuisseIntl />
 				<GlobalStyle />

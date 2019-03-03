@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Slider from 'react-slick'
 import Feature from '../Feature'
 import Typography from '../../../Typography'
 import OuterRow from '../../../Layout/OuterRow'
+import { media } from '../../../../lib'
 import styled from 'styled-components'
 import { useSpring, animated } from 'react-spring'
 
@@ -25,6 +26,16 @@ const FeatureTextWrapper = styled(animated.div)`
 	height: 60px;
 	display: flex;
 	flex-direction: row;
+	${media.xs`
+		flex-direction: column;
+		> * {
+			margin: 0;
+		}
+	`}
+`
+
+const SliderWrapper = styled('div')`
+	width: 100vw;
 `
 
 const FeatureText = ({ header, label }) => {
@@ -52,6 +63,20 @@ const FeatureText = ({ header, label }) => {
 
 const Features = ({ features = featureData }) => {
 	const [count, setCount] = useState(0)
+	const sliderRef = useRef(null)
+
+	const nextSlide = () => sliderRef.current.slickNext()
+	const prevSlide = () => sliderRef.current.slickPrev()
+
+	const handleFeatureClick = (index, activeIndex) => {
+		// if the feature is on the right side
+		if (index > activeIndex || (index === 0 && activeIndex > 1)) {
+			nextSlide()
+			// if the feature is on the left side
+		} else {
+			prevSlide()
+		}
+	}
 
 	return [
 		<OuterRow key="description" style={{ margin: '0 auto' }}>
@@ -60,11 +85,21 @@ const Features = ({ features = featureData }) => {
 			</Typography>
 			<FeatureText {...features[count]} />
 		</OuterRow>,
-		<Slider key="slider" {...sliderSettings} afterChange={index => setCount(index)}>
-			{features.map((feature, index) => {
-				return <Feature {...feature} featureId={feature.key} active={index === count} />
-			})}
-		</Slider>,
+		<SliderWrapper key="slider">
+			<Slider {...sliderSettings} afterChange={index => setCount(index)} ref={sliderRef}>
+				{features.map((feature, index) => {
+					return (
+						<Feature
+							{...feature}
+							key={feature.key}
+							featureId={feature.key}
+							active={index === count}
+							onClick={() => handleFeatureClick(index, count)}
+						/>
+					)
+				})}
+			</Slider>
+		</SliderWrapper>,
 	]
 }
 

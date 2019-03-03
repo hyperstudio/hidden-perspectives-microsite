@@ -12,13 +12,12 @@ const widthMappings = {
 
 const Wrapper = styled('section')`
 	max-width: ${props => widthMappings[props.rowWidth]}px;
-	width: 100%;
 	${space};
 `
 
-const OuterRow = ({ rowWidth, children, ...props }) => {
+const OuterRow = ({ rowWidth, children, strip, ...props }) => {
 	return (
-		<Wrapper px={[4]} rowWidth={rowWidth} {...props}>
+		<Wrapper px={[strip ? 0 : 4]} rowWidth={rowWidth} {...props}>
 			{children}
 		</Wrapper>
 	)

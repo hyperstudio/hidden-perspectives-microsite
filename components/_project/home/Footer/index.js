@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import OuterRow from '../../../Layout/OuterRow'
 import Typography from '../../../Typography'
+import { media } from '../../../../lib/index'
 import { space } from 'styled-system'
 import Persons, { students, initiators } from './Persons'
 import Logo from './Logo'
 
 const Section = styled('div')`
-	width: 50%;
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -25,6 +25,16 @@ const Wrapper = styled('div')`
 const OuterWrapper = styled(OuterRow)`
 	display: flex;
 	flex-direction: row;
+	> div {
+		width: 50%;
+	}
+	${media.xs`
+		flex-direction: column;
+		> div {
+			width: auto;
+			margin-bottom: 48px;
+		}
+	`}
 `
 
 const LogoWrapper = styled('div')`
@@ -33,6 +43,19 @@ const LogoWrapper = styled('div')`
 	padding-bottom: 4px;
 	justify-self: flex-end;
 	position: absolute;
+	${media.xs`
+		display: none;
+	`}
+`
+
+const MobileLogo = styled('div')`
+	padding-left: 4px;
+	padding-top: 120px;
+	justify-self: center;
+	display: none;
+	${media.xs`
+		display: block;
+	`}
 `
 
 const Footer = () => {
@@ -53,6 +76,9 @@ const Footer = () => {
 						Applied Sciences Potsdam:
 					</Typography>
 					<Persons persons={students} />
+					<MobileLogo>
+						<Logo />
+					</MobileLogo>
 				</Section>
 			</OuterWrapper>
 		</Wrapper>
