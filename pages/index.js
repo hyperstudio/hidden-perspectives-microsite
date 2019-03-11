@@ -7,6 +7,8 @@ import { space } from 'styled-system'
 // import Feature from '../components/_project/home/Feature'
 import Features from '../components/_project/home/Features'
 import Footer from '../components/_project/home/Footer'
+import Button from '../components/Button'
+import Vimeo from '../components/Vimeo'
 import { dark } from '../lib/theme'
 
 const Wrapper = styled('div')`
@@ -32,6 +34,14 @@ const FeatureWrapper = styled('div')`
 	margin-top: 160px;
 `
 
+const ButtonWrapper = styled('div')`
+	width: 100%;
+	margin-top: 48px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+`
+
 const features = [
 	{
 		label: `Timeline – Understand the chronology of events, documents and the involvement of protagonists.`,
@@ -52,6 +62,21 @@ const Index = ({}) => {
 						documents and events relating to the U.S.-Iran relationship’s history since
 						the 1978 – 1979 Iranian revolution.
 					</Typography>
+					<Vimeo
+						src={
+							'https://player.vimeo.com/video/320714857?autoplay=1&loop=1&autopause=0'
+						}
+						width={1280}
+						height={660}
+					/>
+
+					<ButtonWrapper>
+						<Button href={'https://irus.vogelino.com'}>
+							<Typography color={'typoAccent'} type={'button'}>
+								Launch App{' '}
+							</Typography>
+						</Button>
+					</ButtonWrapper>
 				</OuterRow>
 			</HeaderWraper>
 			<OuterRow rowWidth={'narrow'}>

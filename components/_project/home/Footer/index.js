@@ -2,10 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import OuterRow from '../../../Layout/OuterRow'
 import Typography from '../../../Typography'
+import { media } from '../../../../lib/index'
 import { space } from 'styled-system'
+import Persons, { students, initiators } from './Persons'
+import Logo from './Logo'
 
 const Section = styled('div')`
-	width: 50%;
+	display: flex;
+	flex-direction: column;
+	position: relative;
 `
 
 const Wrapper = styled('div')`
@@ -20,6 +25,37 @@ const Wrapper = styled('div')`
 const OuterWrapper = styled(OuterRow)`
 	display: flex;
 	flex-direction: row;
+	> div {
+		width: 50%;
+	}
+	${media.xs`
+		flex-direction: column;
+		> div {
+			width: auto;
+			margin-bottom: 48px;
+		}
+	`}
+`
+
+const LogoWrapper = styled('div')`
+	bottom: 0;
+	padding-left: 4px;
+	padding-bottom: 4px;
+	justify-self: flex-end;
+	position: absolute;
+	${media.xs`
+		display: none;
+	`}
+`
+
+const MobileLogo = styled('div')`
+	padding-left: 4px;
+	padding-top: 120px;
+	justify-self: center;
+	display: none;
+	${media.xs`
+		display: block;
+	`}
 `
 
 const Footer = () => {
@@ -27,19 +63,22 @@ const Footer = () => {
 		<Wrapper py={[6, 6, 6]}>
 			<OuterWrapper rowWidth={'wide'}>
 				<Section>
-					<Typography>
-						This project was initiated by John Tirman, Malcolm Byrne and Hussein Banai
-						at the MIT Center for International Studies and Kurt Fendt at MIT
-						Hyperstudio.
-					</Typography>
+					<Typography type={'body2'}>This project was initiated by:</Typography>
+					<Persons persons={initiators} />
+					<LogoWrapper>
+						<Logo />
+					</LogoWrapper>
 				</Section>
 				<Section>
-					<Typography>
-						In close collaboration, this platform was designed and realized between
-						December ’18 and February ‘19 by Lucas Vogel, Florian Zia, Bela Kurek,
-						Ludwig Frank, and Joshua Pacheco, students of the University of Applied
-						Sciences Potsdam.
+					<Typography type={'body2'}>
+						In close collaboration, this platform was designed, concepted and realized
+						between December ’18 and February ‘19 by students of the University of
+						Applied Sciences Potsdam:
 					</Typography>
+					<Persons persons={students} />
+					<MobileLogo>
+						<Logo />
+					</MobileLogo>
 				</Section>
 			</OuterWrapper>
 		</Wrapper>

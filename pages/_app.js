@@ -6,6 +6,7 @@ import theme from '../lib/theme'
 import Layout from '../components/Layout'
 import SuisseIntl from '../static/fonts/SuisseIntl'
 import GlobalStyle from '../lib/theme/GlobalStyle'
+const description = 'A collaborative exploration tool for analysing the US-IRAN relashionships'
 
 class MyApp extends App {
 	static async getInitialProps({ Component, ctx }) {
@@ -28,6 +29,13 @@ class MyApp extends App {
 						type="text/css"
 						charset="UTF-8"
 						href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+					/>
+					<title> Hidden Perspectives </title>
+					<meta property="og:description" content={description} />
+					<meta
+						name="viewport"
+						content="initial-scale=1.0, width=device-width"
+						key="viewport"
 					/>
 				</Head>
 				<SuisseIntl />
