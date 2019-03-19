@@ -71,7 +71,7 @@ const Index = ({}) => {
 					/>
 
 					<ButtonWrapper>
-						<Button href={'https://irus.vogelino.com'}>
+						<Button href={'https://build.bsilverm.now.sh/'}>
 							<Typography color={'typoAccent'} type={'button'}>
 								Launch App{' '}
 							</Typography>
