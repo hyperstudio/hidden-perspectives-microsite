@@ -25,7 +25,7 @@ export const h1 = css`
 
 export const h2 = css`
 	${base};
-	line-height: 16px;
+	line-height: 40px;
 	font-size: 36px;
 	letter-spacing: -0.5px;
 	${media.xs`

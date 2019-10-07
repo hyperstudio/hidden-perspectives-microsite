@@ -18,7 +18,7 @@ const Wrapper = styled('div')`
 	width: 100%;
 `
 
-const HeaderWraper = styled('div')`
+const HeaderWrapper = styled('div')`
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -38,7 +38,7 @@ const ButtonWrapper = styled('div')`
 	width: 100%;
 	margin-top: 48px;
 	display: inline-flex;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 `
 
@@ -54,11 +54,12 @@ const features = [
 const Index = ({}) => {
 	return (
 		<Wrapper>
-			<HeaderWraper py={[6]}>
+			<HeaderWrapper py={[6]}>
 				<OuterRow rowWidth={'wide'}>
-					<Typography type="h1">Hidden Perspectives</Typography>
-					<Typography type="h3">
-						Hidden Perspectives is an interactive digital archive consisting of
+					<Typography type="h1">US-Iran Relations</Typography>
+					<Typography type="h2">National Narratives, America, Iran, and the Clash of Civilizations</Typography>
+					<Typography type="h5">
+						US-Iran Relations is an interactive digital archive consisting of
 						documents and events relating to the U.S.-Iran relationship’s history since
 						the 1978 – 1979 Iranian revolution.
 					</Typography>
@@ -71,16 +72,21 @@ const Index = ({}) => {
 					/>
 
 					<ButtonWrapper>
-						<Button href={'https://build.bsilverm.now.sh/'}>
+					<Button href={'#about'}>
 							<Typography color={'typoAccent'} type={'button'}>
-								Launch App{' '}
+								Project Overview{' '}
+							</Typography>
+						</Button>
+						<Button href={'https://irus.now.sh/'}>
+							<Typography color={'typoAccent'} type={'button'}>
+								Launch Application{' '}
 							</Typography>
 						</Button>
 					</ButtonWrapper>
 				</OuterRow>
-			</HeaderWraper>
+			</HeaderWrapper>
 			<OuterRow rowWidth={'narrow'}>
-				<Typography type="h4">About</Typography>
+				<Typography type="h4" id="about">About</Typography>
 				<Typography type="body1">
 					The U.S.-Iran relationship has long been staggered by each party’s ignorance
 					about the other. Missed opportunities for improvement rose not merely from bad
