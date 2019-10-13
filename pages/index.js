@@ -65,10 +65,10 @@ const Index = ({}) => {
 					</Typography>
 					<Vimeo
 						src={
-							'https://player.vimeo.com/video/366012260?autoplay=1&loop=1&autopause=0'
+							'https://player.vimeo.com/video/366026494?autoplay=1&loop=1&autopause=0'
 						}
-						width={1280}
-						height={660}
+						width={1760}
+						height={657.5}
 					/>
 
 					<ButtonWrapper>
