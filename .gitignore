@@ -4,3 +4,6 @@ node_modules
 
 # production
 /out
+
+# now
+now.json
