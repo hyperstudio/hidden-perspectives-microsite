@@ -2,9 +2,9 @@ export default [
 	{
 		key: 'featuretimeline',
 		header: 'Timeline',
-		label: `Understand the chronology of events, documents and the involvement of protagonists.`,
+		label: 'Understand the chronology of events, documents and the involvement of protagonists.',
 		gif:
-			'`https://i.imgur.com/X5PXAjh.gif`',
+			'https://i.imgur.com/X5PXAjh.gif',
 	},
 	{
 		key: 'featureconnections',
