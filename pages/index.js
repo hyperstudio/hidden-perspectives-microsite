@@ -115,7 +115,7 @@ const Index = ({}) => {
 
 				<Typography type="body1">
 					For it to be accessible to other scholars and the public, a digital presence has
-					been developed. Hidden Perspectives is the result of this development. It is an
+					been developed. US-Iran Relations is the result of this development. It is an
 					attempt to create a framework to explore the material and deep dive into
 					specific historical contexts.
 				</Typography>
