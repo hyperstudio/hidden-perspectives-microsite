@@ -30,7 +30,7 @@ class MyApp extends App {
 						charset="UTF-8"
 						href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
 					/>
-					<title> Hidden Perspectives </title>
+					<title> US-Iran Relations: National Narratives, America, Iran, and the Clash of Civilizations </title>
 					<meta property="og:description" content={description} />
 					<meta
 						name="viewport"
