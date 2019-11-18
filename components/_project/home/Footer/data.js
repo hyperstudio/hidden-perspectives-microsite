@@ -1,7 +1,7 @@
 export default [
 	{
 		name: 'John Tirman',
-		organization: 'Executive Director & Principle Research Scientist at MIT CIS',
+		organization: 'Executive Director & Principal Research Scientist at MIT CIS',
 		url: 'http://cis.mit.edu/people/john-tirman',
 		role: 'initiator',
 	},
@@ -19,7 +19,7 @@ export default [
 	},
 	{
 		name: 'Kurt Fendt',
-		organization: 'Executive Director of MIT Hyperstudio',
+		organization: 'Director of MIT's Active Archive Initiative',
 		url: 'https://cmsw.mit.edu/profile/kurt-fendt/',
 		role: 'initiator',
 	},
