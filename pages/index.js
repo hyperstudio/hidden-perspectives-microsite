@@ -97,10 +97,10 @@ const Index = ({}) => {
 
 				<Typography type="body1">
 					To address this knowledge gap, John Tirman, Malcolm Byrne, and Hussein Banai have
-					approached this topic in a novel way. They conducted several critical
-					oral history conferences bringing together policymakers from several
+					approached this topic in a novel way. They conducted several <i>critical
+					oral history</i> conferences bringing together policymakers from several
 					countries. Most participants were from Iran and the United States.
-					Ohters involved in negotiations from Britain, France, and Italy also contributed.
+					Others involved in negotiations from Britain, France, and Italy also contributed.
 					In various sessions, they interviewed key players and drew from contemporary scholarship to
 					identify hidden perspectives and missed opportunities.
 				</Typography>
