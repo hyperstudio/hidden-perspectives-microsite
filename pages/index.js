@@ -88,54 +88,65 @@ const Index = ({}) => {
 			<OuterRow rowWidth={'narrow'}>
 				<Typography type="h4" id="about">About</Typography>
 				<Typography type="body1">
-					The U.S.-Iran relationship has long been staggered by each party’s ignorance
+					The U.S.-Iran relationship has long been staggered by each nation's misconceptions
 					about the other. Missed opportunities for improvement rose not merely from bad
-					luck but from knowing too little vital information about the other. 40 years
-					after the Iranian revolution, we have still lots to learn about this complex
-					interrelation.
+					luck, but from knowing too little vital information about the other. Forty years
+					after the Iranian revolution, we still have much to learn about this complex
+					relationship.
 				</Typography>
 
 				<Typography type="body1">
-					To address this knowledge gap <Link to="/">John Tirman</Link>,{' '}
-					<Link to="/">Malcolm Byrne</Link> and <Link to="/">Hussein Banai </Link> have
-					approached this relationship in an unusual way. They conducted several “critical
-					oral history” conferences, where they brought together policymakers from several
-					countries, mainly Iran and the United States but also others, involved
-					particularly in negotiations from Britain, France, and Italy. In various
-					sessions, they interviewed key players and absorbed contemporary scholarship to
+					To address this knowledge gap, John Tirman, Malcolm Byrne, and Hussein Banai have
+					approached this topic in a novel way. They conducted several critical
+					oral history conferences bringing together policymakers from several
+					countries. Most participants were from Iran and the United States.
+					Ohters involved in negotiations from Britain, France, and Italy also contributed.
+					In various sessions, they interviewed key players and drew from contemporary scholarship to
 					identify hidden perspectives and missed opportunities.
 				</Typography>
 
 				<Typography type="body1">
 					As a basis for the conversation, they provided a collection of documents
 					procured through Freedom of Information Act requests and open-source documents,
-					such as published interviews, analyses, memoirs, and more. This archive of
-					documents is the bulk of what is now accessible on this platform.
+					such as published interviews, analyses, memoirs, and more, including transcripts
+					of the critical oral history conferences. This archive of documents is the bulk
+					of what is now accessible on this platform, which is accessible to other scholars
+					and the public. It creates a framework to explore the material&mdash;much of it
+					available publicly for the first time&mdash;and deep dives into specific historical
+					events.
 				</Typography>
 
 				<Typography type="body1">
-					For it to be accessible to other scholars and the public, a digital presence has
-					been developed. US-Iran Relations is the result of this development. It is an
-					attempt to create a framework to explore the material and deep dive into
-					specific historical contexts.
+					The project team set out to create a single, inclusive narrative of the relationship.
+					The documents, film, and photography all contribute to understanding the U.S.-Iran
+					confrontation as a single story with multiple perspectives. At the same time, we came
+					to realize that each country was approaching the relationship constrained by their
+					own national narrative, their story about their nation-state, and that these
+					narratives clash in significant ways.  Narratives are not “hidden” but they are so
+					woven into the fabric of society and culture that they are not always recognized as
+					such.
+				</Typography>
+
+				<Typography type="body1">
+					However one defines the confrontation&mdash;whether a clash of geostrategic interests,
+					a succumbing to domestic spoilers, or a struggle of resistance to hegemony&mdash;the
+					resources on this platform should be of immense value to policy professionals,
+					journalists, students, and scholars.
 				</Typography>
 
 				<Typography type="h4">The Digital Archive</Typography>
 
 				<Typography type="body1">
-					The digital archive consists of 560 documents, dating from 1971 to 2012. Those
-					have been summarized and enhanced with additional metadata. Furthermore, a
-					thousand event entries ranging from 1975 to 1999 extend the dataset.
+					The digital archive consists of hundreds of documents, dating from 1971 to 2012. They
+					are summarized and enhanced with additional metadata. A thousand event entries ranging
+					from 1975 to 1999 extend the dataset.
 				</Typography>
 				<Typography type="body1">
-					In order to uncover patterns within the archive and to contextualize individual
-					documents and events, connections were made. We also used the process called
-					named entity extraction to identify protagonists involved in the dataset. While
-					the dataset might contain human biases and automation mistakes, it served as an
-					initial foundation for further investigation and will be improved in the long
-					run. Ultimately, those connected entries were visualized in an interactive
-					digital archive that provides an elegant way to access and explore the delicate
-					connection between the two countries.
+					We made connections between documents and events to uncover patterns within the archive.
+					We also used a process called <i>named entity extraction</i> to identify protagonists involved
+					in the dataset. While the dataset might contain human biases and automation mistakes,
+					it serves as an initial foundation for further investigation and will be updated and
+					expanded regularly. We welcome suggestions, annotations, and additional archival material.
 				</Typography>
 			</OuterRow>
 			<ThemeProvider theme={dark}>
