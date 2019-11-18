@@ -19,7 +19,7 @@ export default [
 	},
 	{
 		name: 'Kurt Fendt',
-		organization: 'Director of MIT's Active Archive Initiative',
+		organization: 'Director of MIT\'s Active Archive Initiative',
 		url: 'https://cmsw.mit.edu/profile/kurt-fendt/',
 		role: 'initiator',
 	},
