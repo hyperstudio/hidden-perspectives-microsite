@@ -1,5 +1,5 @@
 import React from 'react'
-import App, { Container } from 'next/app'
+import App from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 import theme from '../lib/theme'
@@ -22,12 +22,12 @@ class MyApp extends App {
 	render() {
 		const { Component, pageProps } = this.props
 		return (
-			<Container>
+			<>
 				<Head>
 					<link
 						rel="stylesheet"
 						type="text/css"
-						charset="UTF-8"
+						charSet="UTF-8"
 						href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
 					/>
 					<title> US-Iran Relations: National Narratives, America, Iran, and the Clash of Civilizations </title>
@@ -45,7 +45,7 @@ class MyApp extends App {
 						<Component {...pageProps} />
 					</Layout>
 				</ThemeProvider>
-			</Container>
+			</>
 		)
 	}
 }
