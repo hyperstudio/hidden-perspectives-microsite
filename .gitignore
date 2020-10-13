@@ -7,3 +7,11 @@ node_modules
 
 # now
 now.json
+
+# yarn
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
