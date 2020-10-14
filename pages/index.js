@@ -51,7 +51,8 @@ const features = [
 	},
 ]
 
-const Index = ({}) => {
+const Index = (props) => {
+	const { contributors } = props;
 	return (
 		<Wrapper>
 			<HeaderWrapper py={[6]}>
@@ -159,6 +160,16 @@ const Index = ({}) => {
 			</ThemeProvider>
 		</Wrapper>
 	)
+}
+
+export async function getStaticProps(context) {
+
+  const res = await fetch(`${process.env.API_URL}/items/contributors`)
+	const contributors = await res.json()
+	
+  return {
+    props: { contributors }, // will be passed to the page component as props
+  }
 }
 
 export default Index
