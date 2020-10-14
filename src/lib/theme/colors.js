@@ -1,0 +1,17 @@
+export const yellow = {
+  50: '#fef6e6',
+  100: '#fde8c2',
+  200: '#fcd999',
+  300: '#faca70',
+  400: '#f9be51',
+  500: '#f8b332',
+  600: '#f7ac2d',
+  700: '#f6a326',
+  800: '#f59a1f',
+  900: '#f38b13',
+  A100: '#ffffff',
+  A200: '#fff6ee',
+  A400: '#ffddbb',
+  A700: '#ffd0a1',
+  contrastDefaultColor: 'dark',
+};
