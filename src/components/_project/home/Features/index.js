@@ -48,10 +48,10 @@ const FeatureText = ({ header, label }) => {
     <FeatureTextWrapper style={props}>
       <Typography
         style={{
-				  maxWidth: '110px',
-				  minWidth: '110px',
-				  marginRight: '60px',
-				  opacity: 0.5,
+          maxWidth: '110px',
+          minWidth: '110px',
+          marginRight: '60px',
+          opacity: 0.5,
         }}
       >
         {header}

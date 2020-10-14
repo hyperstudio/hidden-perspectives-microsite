@@ -33,7 +33,7 @@ const TextWrapper = styled('div')`
 `;
 
 const Person = ({
-  name, label, organization, role, url,
+  name, organization, role, url,
 }) => {
   const imgSrc = `https://res.cloudinary.com/podocu/image/upload/w_100,ar_1:1,c_fill,g_auto/v1551281230/university/hidden_perspectives/persons/${name.replace(
     ' ',

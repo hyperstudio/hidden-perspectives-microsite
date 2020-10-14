@@ -28,7 +28,7 @@ const Typography = ({
 		${textAlign};
 		${color
 			&& css`
-				color: ${(props) => props.theme.color[color]};
+				color: ${({ theme }) => theme.color[color]};
 			`}
 	`;
 

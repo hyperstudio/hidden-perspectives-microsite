@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { default as NextLink } from 'next/link';
+import NextLink from 'next/link';
 
 const linkStyles = css`
 	border-bottom: 1px solid rgba(48, 48, 48, 0.2);
@@ -30,9 +30,9 @@ const Link = ({
   }
 
   return (
-    <ExternalLink {...props} href={href} target="_blank">
+    <StyledLink {...props} href={href} target="_blank">
       {children}
-    </ExternalLink>
+    </StyledLink>
   );
 };
 

@@ -4,8 +4,9 @@ import { space } from 'styled-system';
 import OuterRow from '../../../Layout/OuterRow';
 import Typography from '../../../Typography';
 import { media } from '../../../../lib/index';
-import Persons, { students, initiators } from './Persons';
+import Persons from './Persons';
 import Logo from './Logo';
+import { alphabeticalSort } from '../../../../lib/utils/sortUtil';
 
 const Section = styled('div')`
 	display: flex;

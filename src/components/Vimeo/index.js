@@ -19,10 +19,10 @@ const Frame = styled('iframe')`
 `;
 
 const Vimeo = ({ src, width, height }) => {
-  width < 1056 ? (width = width) : (width = 1056);
+  const vidWidth = (width < 1056) ? (width) : (1056);
 
   return (
-    <Wrapper dimensions={[width, height]}>
+    <Wrapper dimensions={[vidWidth, height]}>
       <Frame src={src} webkitallowfullscreen mozallowfullscreen allowfullscreen />
     </Wrapper>
   );

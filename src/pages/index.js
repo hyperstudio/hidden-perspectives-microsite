@@ -2,7 +2,6 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { space } from 'styled-system';
 import Typography from '../components/Typography';
-import Link from '../components/Typography/Link';
 import OuterRow from '../components/Layout/OuterRow';
 // import Feature from '../components/_project/home/Feature'
 import Features from '../components/_project/home/Features';
@@ -42,15 +41,6 @@ const ButtonWrapper = styled('div')`
 	align-items: center;
 `;
 
-const features = [
-  {
-    label: 'Timeline – Understand the chronology of events, documents and the involvement of protagonists.',
-  },
-  {
-    label: 'Original Documents – Study scans and transcripts of all primary sources.',
-  },
-];
-
 const Index = (props) => {
   const { contributors } = props;
   return (
@@ -89,7 +79,7 @@ const Index = (props) => {
       <OuterRow rowWidth="narrow">
         <Typography type="h4" id="about">About</Typography>
         <Typography type="body1">
-          The U.S.-Iran relationship has long been staggered by each nation's misconceptions
+          The U.S.-Iran relationship has long been staggered by each nation&apos;s misconceptions
           about the other. Missed opportunities for improvement rose not merely from bad
           luck, but from knowing too little vital information about the other. Forty years
           after the Iranian revolution, we still have much to learn about this complex
@@ -108,8 +98,8 @@ const Index = (props) => {
           conferences bringing together policymakers from several
           countries. Most participants were from Iran and the United States.
           Others involved in negotiations from Britain, France, and Italy also contributed.
-          In various sessions, they interviewed key players and drew from contemporary scholarship to
-          identify hidden perspectives and missed opportunities.
+          In various sessions, they interviewed key players and drew from contemporary
+          scholarship to identify hidden perspectives and missed opportunities.
         </Typography>
 
         <Typography type="body1">
@@ -172,7 +162,8 @@ const Index = (props) => {
   );
 };
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
+  // eslint-disable-next-line no-undef
   const res = await fetch(`${process.env.API_URL}/items/contributors`);
   const contributors = await res.json();
 
