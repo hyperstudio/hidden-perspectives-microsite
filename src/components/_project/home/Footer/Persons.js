@@ -5,9 +5,11 @@ import Person from './Person';
 
 const Wrapper = styled('div')``;
 
-const Persons = ({ persons }) => (
+const Persons = ({ persons, photoUrls }) => (
   <Wrapper>
-    {persons.map((person) => <Person {...person} key={person.name} />)}
+    {persons.map((person) => (
+      <Person {...person} key={person.name} photo={photoUrls[person.photo]} />
+    ))}
   </Wrapper>
 );
 

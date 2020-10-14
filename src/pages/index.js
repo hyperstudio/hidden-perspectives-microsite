@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { space } from 'styled-system';
@@ -42,7 +43,7 @@ const ButtonWrapper = styled('div')`
 `;
 
 const Index = (props) => {
-  const { contributors } = props;
+  const { contributors, photoUrls } = props;
   return (
     <Wrapper>
       <HeaderWrapper py={[6]}>
@@ -154,7 +155,7 @@ const Index = (props) => {
         <>
           <FeatureWrapper>
             <Features />
-            <Footer contributors={contributors} />
+            <Footer contributors={contributors} photoUrls={photoUrls} />
           </FeatureWrapper>
         </>
       </ThemeProvider>
@@ -163,12 +164,21 @@ const Index = (props) => {
 };
 
 export async function getStaticProps() {
-  // eslint-disable-next-line no-undef
   const res = await fetch(`${process.env.API_URL}/items/contributors`);
   const contributors = await res.json();
+  const photoUrls = {};
+  await Promise.all(contributors.data.map(async (contributor) => {
+    const { photo } = contributor;
+    const photoRes = photo
+      ? await fetch(`${process.env.API_URL}/files/${photo}`)
+      : await fetch(`${process.env.API_URL}/files/11`);
+    const { data } = await photoRes.json();
+    const photoUrl = `${process.env.API_URL}/assets/${data.private_hash}`;
+    photoUrls[contributor.photo] = photoUrl;
+  }));
 
   return {
-    props: { contributors }, // will be passed to the page component as props
+    props: { contributors, photoUrls }, // will be passed to the page component as props
   };
 }
 

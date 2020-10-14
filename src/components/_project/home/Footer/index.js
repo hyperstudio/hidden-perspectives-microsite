@@ -59,11 +59,18 @@ const MobileLogo = styled('div')`
 	`}
 `;
 
-const Footer = ({ contributors }) => {
+const Footer = ({ contributors, photoUrls }) => {
   const { data } = contributors;
-  const students = alphabeticalSort(data.filter((person) => person.role !== 'initiator'), 'name');
+  const students = alphabeticalSort(
+    data.filter((person) => person.affiliation === 'fhp'),
+    'name',
+  );
   const initiators = alphabeticalSort(
     data.filter((person) => person.role === 'initiator'),
+    'name',
+  );
+  const aai = alphabeticalSort(
+    data.filter((person) => person.affiliation === 'aai'),
     'name',
   );
   return (
@@ -71,7 +78,7 @@ const Footer = ({ contributors }) => {
       <OuterWrapper rowWidth="wide">
         <Section>
           <Typography type="body2">This project was initiated by:</Typography>
-          <Persons persons={initiators} />
+          <Persons persons={initiators} photoUrls={photoUrls} />
           <LogoWrapper>
             <Logo />
           </LogoWrapper>
@@ -79,10 +86,14 @@ const Footer = ({ contributors }) => {
         <Section>
           <Typography type="body2">
             In close collaboration, this platform was designed, concepted and realized
-            between December ’18 and February ‘19 by students of the University of
+            between December &rsquo;18 and February &rsquo;19 by students of the University of
             Applied Sciences Potsdam:
           </Typography>
-          <Persons persons={students} />
+          <Persons persons={students} photoUrls={photoUrls} />
+          <Typography type="body2" mt="4">
+            Additional design and development in &rsquo;20 by:
+          </Typography>
+          <Persons persons={aai} photoUrls={photoUrls} />
           <MobileLogo>
             <Logo />
           </MobileLogo>

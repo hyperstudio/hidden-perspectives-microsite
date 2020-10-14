@@ -33,12 +33,9 @@ const TextWrapper = styled('div')`
 `;
 
 const Person = ({
-  name, organization, role, url,
+  name, organization, affiliation, url, photo,
 }) => {
-  const imgSrc = `https://res.cloudinary.com/podocu/image/upload/w_100,ar_1:1,c_fill,g_auto/v1551281230/university/hidden_perspectives/persons/${name.replace(
-    ' ',
-    '',
-  )}.png`;
+  const imgSrc = photo;
   return (
     <Wrapper href={url} target="_blank">
       <AvatarPlaceHolder src={imgSrc} />
@@ -46,7 +43,7 @@ const Person = ({
         <Typography m={0} mt="-1px" type="body2">
           {name}
         </Typography>
-        {organization && role === 'initiator' && (
+        {organization && affiliation !== 'fhp' && (
         <Typography mt={0} mb={0} type="caption">
           {organization}
         </Typography>
