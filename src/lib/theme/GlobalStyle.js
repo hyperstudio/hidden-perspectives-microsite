@@ -1,7 +1,45 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+	@font-face {
+      font-family: 'Suisse Intl';
+      src: url('SuisseIntl-Medium.woff2') format('woff2'),
+        url('SuisseIntl-Medium.woff') format('woff');
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Suisse Intl';
+      src: url('/fonts/SuisseIntl/SuisseIntl-Bold.woff2')
+          format('woff2'),
+        url('/fonts/SuisseIntl/SuisseIntl-Bold.woff')
+          format('woff');
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Suisse Intl';
+      src: url('/fonts/SuisseIntl/SuisseIntl-Book.woff2')
+          format('woff2'),
+        url('/fonts/SuisseIntl/SuisseIntl-Book.woff')
+          format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Suisse Intl';
+      src: url('/fonts/SuisseIntl/SuisseIntl-SemiBold.woff2')
+          format('woff2'),
+        url('/fonts/SuisseIntl/SuisseIntl-SemiBold.woff')
+          format('woff');
+      font-weight: 600;
+      font-style: normal;
+    }
  * {
+   backface-visibility: hidden;
    -webkit-backface-visibility: hidden;
    -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

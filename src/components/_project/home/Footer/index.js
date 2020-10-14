@@ -60,9 +60,10 @@ const MobileLogo = styled('div')`
 `;
 
 const Footer = ({ contributors }) => {
-  const students = alphabeticalSort(contributors.filter((person) => person.role !== 'initiator'), 'name');
+  const { data } = contributors;
+  const students = alphabeticalSort(data.filter((person) => person.role !== 'initiator'), 'name');
   const initiators = alphabeticalSort(
-    contributors.filter((person) => person.role === 'initiator'),
+    data.filter((person) => person.role === 'initiator'),
     'name',
   );
   return (

@@ -4,7 +4,6 @@ import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import theme from '../lib/theme';
 import Layout from '../components/Layout';
-import SuisseIntl from '../static/fonts/SuisseIntl';
 import GlobalStyle from '../lib/theme/GlobalStyle';
 
 const description = 'A collaborative exploration tool for analysing the US-IRAN relashionships';
@@ -42,7 +41,6 @@ class MyApp extends App {
             key="viewport"
           />
         </Head>
-        <SuisseIntl />
         <GlobalStyle />
         <ThemeProvider theme={theme}>
           <Layout>
