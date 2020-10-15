@@ -1416,6 +1416,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.2.0":
+  version: 7.12.0
+  resolution: "@babel/runtime@npm:7.12.0"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: 22362076a3e957be517f8bf3e7891a4b160e8f516dd37b62aa7ffefa5b17cab35189965f694be69c073796a62040d1dbad6b4b26d8bd31f616d66545f6701b93
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:^7.3.1":
   version: 7.3.4
   resolution: "@babel/runtime@npm:7.3.4"
@@ -1663,10 +1672,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@popperjs/core@npm:^2.4.4":
+  version: 2.5.3
+  resolution: "@popperjs/core@npm:2.5.3"
+  checksum: 53a693e058732f6f38773ea3a9e498e9578b375e5352899eff63a9cb9906c54f141dc0b544a7789652303ce342be769e0d76420a8066f9ec973dda4086de2b55
+  languageName: node
+  linkType: hard
+
 "@sindresorhus/is@npm:^3.1.1":
   version: 3.1.2
   resolution: "@sindresorhus/is@npm:3.1.2"
   checksum: da0047761ed8f7803955bedefe75324f3601b950b98c38f6e5e409ed3ce4c07035ed2733cce9b48377d9fc8cfbaa5b2aa8bac0505188a7c5b65a06c47057a610
+  languageName: node
+  linkType: hard
+
+"@smooth-ui/core-sc@npm:^7.0.4":
+  version: 7.1.1
+  resolution: "@smooth-ui/core-sc@npm:7.1.1"
+  dependencies:
+    polished: ^2.3.3
+    prop-types: ^15.6.2
+    react-focus-lock: ^1.17.6
+    react-transition-group: ^2.5.2
+  peerDependencies:
+    react: ">=16.3.0"
+    react-dom: ">=16.3.0"
+    styled-components: ^4.0.0
+  checksum: 2aa09fe74ada1e2e3115796ab7b118d7623416c681877d1b3bbfb8f77dca266af2e9344eeb12915d333177c663978ad884d6861e3625f1a97630c4cac19aad97
   languageName: node
   linkType: hard
 
@@ -2744,6 +2776,13 @@ __metadata:
   version: 4.11.8
   resolution: "bn.js@npm:4.11.8"
   checksum: c1c20812fc35367c13d5d4387b88b6b1f60dd685006d928fe7710d2b4c95ace661b7c4e400f484e189874481a813965ca32f12e9cbb31c3ced465d96fab5bcd8
+  languageName: node
+  linkType: hard
+
+"body-scroll-lock@npm:^3.1.5":
+  version: 3.1.5
+  resolution: "body-scroll-lock@npm:3.1.5"
+  checksum: e8de58edc0fd7d483e3971045ff83fe6d722592d5153e9bfc9da2962a179a6522b432a4b35344bc8ae522eec080cc87301ce4ded4878f26254bf42a4f26d27ed
   languageName: node
   linkType: hard
 
@@ -3907,6 +3946,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dom-helpers@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "dom-helpers@npm:3.4.0"
+  dependencies:
+    "@babel/runtime": ^7.1.2
+  checksum: 7625598dbfef65a50801e194b88f277ab398dd92c27398280fd8d69294326f05d9b0588922560ba50e10d9fe5ee8096f90995d679b7db2b776afd579d495b962
+  languageName: node
+  linkType: hard
+
 "dom-serializer@npm:1.0.1":
   version: 1.0.1
   resolution: "dom-serializer@npm:1.0.1"
@@ -4825,6 +4873,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"focus-lock@npm:^0.6.3":
+  version: 0.6.8
+  resolution: "focus-lock@npm:0.6.8"
+  checksum: 3fa9df85c3d31c30c9447cac1a7b6c3416ae2458af84a5dcd3997c63cff812e3749e026db430f85539631bd7fd820cfaf15d9d8a8ee0d0835313b568198c771e
+  languageName: node
+  linkType: hard
+
 "for-in@npm:^1.0.2":
   version: 1.0.2
   resolution: "for-in@npm:1.0.2"
@@ -5292,6 +5347,7 @@ fsevents@~2.1.2:
   version: 0.0.0-use.local
   resolution: "hidden-perspectives-microsite@workspace:."
   dependencies:
+    "@smooth-ui/core-sc": ^7.0.4
     "@yarnpkg/pnpify": ^2.3.3
     babel-plugin-styled-components: ^1.11.1
     eslint: ^7.11.0
@@ -5304,6 +5360,7 @@ fsevents@~2.1.2:
     jquery: ^3.5.1
     next: ^9.5.5
     next-optimized-images: ^2.6.2
+    polished: ^4.0.3
     preact: ^10.5.4
     prop-types: 15.7.2
     react: ^16.13.1
@@ -5311,6 +5368,7 @@ fsevents@~2.1.2:
     react-is: ^16.13.1
     react-slick: ^0.27.11
     react-spring: ^8.0.27
+    reakit: ^1.2.4
     resolve: ^1.17.0
     slick-carousel: ^1.8.1
     styled-components: ^4.4.1
@@ -7662,6 +7720,24 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"polished@npm:^2.3.3":
+  version: 2.3.3
+  resolution: "polished@npm:2.3.3"
+  dependencies:
+    "@babel/runtime": ^7.2.0
+  checksum: 2bd37216fc6c03a65841fa8264db26ea6ce6732141a24114cfcc0ebc0afb0bcabf21c2c9416da89dc16b4e0926b14d5696f053fbaf53769a769465d3cf5c10d3
+  languageName: node
+  linkType: hard
+
+"polished@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "polished@npm:4.0.3"
+  dependencies:
+    "@babel/runtime": ^7.12.0
+  checksum: ae644280769a5ebd87101f7452a82233fb81e6ac824acffd90e470ce76098abfcfecf989a1ffb328aaa88804ed265f3308a861c6bf48611eecc69ac5767130da
+  languageName: node
+  linkType: hard
+
 "posix-character-classes@npm:^0.1.0":
   version: 0.1.1
   resolution: "posix-character-classes@npm:0.1.1"
@@ -8015,6 +8091,17 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"react-clientside-effect@npm:^1.2.0":
+  version: 1.2.2
+  resolution: "react-clientside-effect@npm:1.2.2"
+  dependencies:
+    "@babel/runtime": ^7.0.0
+  peerDependencies:
+    react: ^15.3.0 || ^16.0.0
+  checksum: 364329073a09955f8eef24247a3f38f13e0e4abf446cc011b53850cc197b6d1ec9932c1918970eef3cc0a01ec7a289ee68963fd7e37faf2aa9033c4c0d95dc72
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:^16.13.1":
   version: 16.13.1
   resolution: "react-dom@npm:16.13.1"
@@ -8029,6 +8116,20 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"react-focus-lock@npm:^1.17.6":
+  version: 1.19.1
+  resolution: "react-focus-lock@npm:1.19.1"
+  dependencies:
+    "@babel/runtime": ^7.0.0
+    focus-lock: ^0.6.3
+    prop-types: ^15.6.2
+    react-clientside-effect: ^1.2.0
+  peerDependencies:
+    react: ^15.0.0 || ^16.0.0
+  checksum: e5b579035330c3893d14c95c2c2dc934d793bbc6f70b2c294634652928893e71ea4c8c8c710629b7b1972d65e30366d477fa0d1e793129d1e7334fd6820a8269
+  languageName: node
+  linkType: hard
+
 "react-is@npm:16.13.1, react-is@npm:^16.13.1, react-is@npm:^16.6.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -8040,6 +8141,13 @@ fsevents@~2.1.2:
   version: 16.8.2
   resolution: "react-is@npm:16.8.2"
   checksum: 70eccee4dabdc04fad0cc8d8c3bea5c15b9ab40f764714eca26b9a0f66ddda020482843f92523dd982dd196f57a9e5e3c1d15152dcd63cc2d629fdf0fbd7d83d
+  languageName: node
+  linkType: hard
+
+"react-lifecycles-compat@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "react-lifecycles-compat@npm:3.0.4"
+  checksum: 82176a55ef7526414d770d5e07dc1d28b4c7f20281f22c6f53f3a98df9dbbb5d70c94bebee57b4ea8ccc2eee430b907ca7b564a42fbdd0ed21e7c43bfee35404
   languageName: node
   linkType: hard
 
@@ -8076,6 +8184,21 @@ fsevents@~2.1.2:
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
   checksum: 8f041fd3037df9b610deeb5eb12d035ed9188ee0be4d2882b017db6074e7ab66ec9a990506e687274576516557d427a9199497b5559d3409ec38986dba987587
+  languageName: node
+  linkType: hard
+
+"react-transition-group@npm:^2.5.2":
+  version: 2.9.0
+  resolution: "react-transition-group@npm:2.9.0"
+  dependencies:
+    dom-helpers: ^3.4.0
+    loose-envify: ^1.4.0
+    prop-types: ^15.6.2
+    react-lifecycles-compat: ^3.0.4
+  peerDependencies:
+    react: ">=15.0.0"
+    react-dom: ">=15.0.0"
+  checksum: eefed08c48a0d377b5fac3ac7fac54ed986d5dcdd4494f36075954c9d2d257072a9d18cc02c6d8e6698034722b1ff9419ad0c24ef068dea742edcff9f8ea4ba9
   languageName: node
   linkType: hard
 
@@ -8154,6 +8277,55 @@ fsevents@~2.1.2:
   dependencies:
     picomatch: ^2.2.1
   checksum: a64fe5606937d9655252230003362d95da05dbfd3baecedb4bb8c1bc0df497d051a192f9b75345c944e58a0b362c68349be602d6dbf05d03770e510b35a9f80f
+  languageName: node
+  linkType: hard
+
+"reakit-system@npm:^0.14.5":
+  version: 0.14.5
+  resolution: "reakit-system@npm:0.14.5"
+  dependencies:
+    reakit-utils: ^0.14.4
+  peerDependencies:
+    react: ^16.8.0
+    react-dom: ^16.8.0
+  checksum: 84fee2cd780b89df161b6b110d3017585f4256ec92f18b9a590b8a6cbe556183826fff5b9d0d549af645b4d33399e68ed58884c5361161a56d5a76d4219cc719
+  languageName: node
+  linkType: hard
+
+"reakit-utils@npm:^0.14.4":
+  version: 0.14.4
+  resolution: "reakit-utils@npm:0.14.4"
+  peerDependencies:
+    react: ^16.8.0
+    react-dom: ^16.8.0
+  checksum: 7ee4aac3d40d3c5d97d0855e6214f3c525c6cfbc21d4fce28a97a6bca1b8cc4277f4d2cfe29275fc1763282e96d391e45d550dfe55b6f1a3ddf9ee94565a7268
+  languageName: node
+  linkType: hard
+
+"reakit-warning@npm:^0.5.5":
+  version: 0.5.5
+  resolution: "reakit-warning@npm:0.5.5"
+  dependencies:
+    reakit-utils: ^0.14.4
+  peerDependencies:
+    react: ^16.8.0
+  checksum: 80e8010114508608676805189bc035eebcb2ea71250361aac27824544c721e916fb9ee69382522e3b2f3c30f1ed0e2570647080512f348595d038a1d07c064f1
+  languageName: node
+  linkType: hard
+
+"reakit@npm:^1.2.4":
+  version: 1.2.5
+  resolution: "reakit@npm:1.2.5"
+  dependencies:
+    "@popperjs/core": ^2.4.4
+    body-scroll-lock: ^3.1.5
+    reakit-system: ^0.14.5
+    reakit-utils: ^0.14.4
+    reakit-warning: ^0.5.5
+  peerDependencies:
+    react: ^16.8.0
+    react-dom: ^16.8.0
+  checksum: 45a8c820cb14a6e37941b29ba6ab1887679669836443408adaec55ab868840728cc2d4f8d0a9dae5e682a093611aef71af0a1a7c153ccae761e4a76fbba4464d
   languageName: node
   linkType: hard
 

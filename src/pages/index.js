@@ -2,6 +2,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { space } from 'styled-system';
+import Errors from '../components/Errors';
 import Typography from '../components/Typography';
 import OuterRow from '../components/Layout/OuterRow';
 // import Feature from '../components/_project/home/Feature'
@@ -43,9 +44,10 @@ const ButtonWrapper = styled('div')`
 `;
 
 const Index = (props) => {
-  const { contributors, photoUrls } = props;
+  const { contributors, photoUrls, errors } = props;
   return (
     <Wrapper>
+      <Errors errors={errors} />
       <HeaderWrapper py={[6]}>
         <OuterRow rowWidth="wide">
           <Typography type="h1">US-Iran Relations</Typography>
@@ -155,7 +157,9 @@ const Index = (props) => {
         <>
           <FeatureWrapper>
             <Features />
-            <Footer contributors={contributors} photoUrls={photoUrls} />
+            {!errors && (
+              <Footer contributors={contributors} photoUrls={photoUrls} />
+            )}
           </FeatureWrapper>
         </>
       </ThemeProvider>
@@ -164,22 +168,26 @@ const Index = (props) => {
 };
 
 export async function getStaticProps() {
-  const res = await fetch(`${process.env.API_URL}/items/contributors`);
-  const contributors = await res.json();
-  const photoUrls = {};
-  await Promise.all(contributors.data.map(async (contributor) => {
-    const { photo } = contributor;
-    const photoRes = photo
-      ? await fetch(`${process.env.API_URL}/files/${photo}`)
-      : await fetch(`${process.env.API_URL}/files/11`);
-    const { data } = await photoRes.json();
-    const photoUrl = `${process.env.API_URL}/assets/${data.private_hash}`;
-    photoUrls[contributor.photo] = photoUrl;
-  }));
-
-  return {
-    props: { contributors, photoUrls }, // will be passed to the page component as props
-  };
+  const res = await fetch(`${process.env.API_URL}/items/contributors`)
+    .catch((err) => ({
+      error: err.message,
+    }));
+  if (!res.error) {
+    const contributors = await res.json();
+    const photoUrls = {};
+    await Promise.all(contributors.data.map(async (contributor) => {
+      const { photo } = contributor;
+      const photoRes = photo
+        ? await fetch(`${process.env.API_URL}/files/${photo}`)
+        : await fetch(`${process.env.API_URL}/files/11`);
+      const { data } = await photoRes.json();
+      const photoUrl = `${process.env.API_URL}/assets/${data.private_hash}`;
+      photoUrls[contributor.photo] = photoUrl;
+    }));
+    return {
+      props: { contributors, photoUrls },
+    };
+  } return { props: { errors: [res.error] } };
 }
 
 export default Index;
