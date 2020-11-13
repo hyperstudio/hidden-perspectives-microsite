@@ -47,7 +47,7 @@ const Index = (props) => {
   const { contributors, photoUrls, errors } = props;
   return (
     <Wrapper>
-      <Errors errors={errors} />
+      <Errors errors={errors || []} />
       <HeaderWrapper py={[6]}>
         <OuterRow rowWidth="wide">
           <Typography type="h1">US-Iran Relations</Typography>
@@ -70,7 +70,7 @@ const Index = (props) => {
                 {' '}
               </Typography>
             </Button>
-            <Button href="https://irus.now.sh/">
+            <Button href="https://irus.vercel.app/">
               <Typography color="typoAccent" type="button">
                 Launch Application
                 {' '}
