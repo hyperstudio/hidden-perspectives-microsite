@@ -2,11 +2,15 @@ node_modules
 .next
 .DS_Store
 
+# secrets
+.env.local
+
 # production
 /out
 
 # now
 now.json
+.vercel
 
 # yarn
 .yarn/*

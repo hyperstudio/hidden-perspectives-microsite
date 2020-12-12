@@ -77,7 +77,7 @@ const Index = ({}) => {
 								Project Overview{' '}
 							</Typography>
 						</Button>
-						<Button href={'https://irus.now.sh/'}>
+						<Button href={'https://irus.vercel.app/'}>
 							<Typography color={'typoAccent'} type={'button'}>
 								Launch Application{' '}
 							</Typography>
