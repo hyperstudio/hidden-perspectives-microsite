@@ -121,6 +121,10 @@ export const button = css`
 	font-weight: 600;
 	line-height: 16px;
 	font-size: 14px;
+  ${media.xs`
+    font-size: 0.75rem;
+	line-height: 0.75rem;
+  `}
 	text-transform: uppercase;
 	letter-spacing: 0.65px;
 	margin: 0;

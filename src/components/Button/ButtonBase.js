@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { media } from '../../lib/index';
 
 const styles = css`
   display: inline-flex;
@@ -19,6 +20,9 @@ const styles = css`
   text-decoration: none;
   color: inherit;
   padding: 6px 24px;
+  ${media.xs`
+    padding: 3px 12px;
+  `}
   height: 32px;
   background-color: rgba(248, 179, 50, 0.45);
   border-radius: 4px;
@@ -26,6 +30,9 @@ const styles = css`
   &:hover {
     background-color: rgba(248, 179, 50, 0.65);
   }
+	&:focus {
+		box-shadow: inset 0 0 0 2px #c0c0c0;
+	}
 `;
 
 const ButtonBase = ({ children, href, onClick }) => {

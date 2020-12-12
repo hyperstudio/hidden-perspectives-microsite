@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { space } from 'styled-system';
 import Errors from '../components/Errors';
 import Typography from '../components/Typography';
+import { media } from '../lib/index';
 import OuterRow from '../components/Layout/OuterRow';
 // import Feature from '../components/_project/home/Feature'
 import Features from '../components/_project/home/Features';
@@ -28,7 +29,7 @@ const HeaderWrapper = styled('div')`
 	${space}
 `;
 
-const HeaderContainer = styled.header`
+const Navbar = styled.header`
 	width: 90%;
 	height: 7rem;
 	top: 0;
@@ -47,19 +48,23 @@ const HeaderLink = styled.a`
 	background: none;
   font-family: 'Suisse Intl', sans-serif;
 	color: black;
-	font-size: 1.2rem;
+	font-size: 1rem;
 	cursor: pointer;
 	outline: none;
 	text-decoration: none;
 	text-align: left;
+	${space}
 
 	&.active {
 		cursor: default;
 	}
 
 	&:focus {
-		box-shadow: inset 0 0 0 2px #757575;
+		box-shadow: inset 0 0 0 2px #c0c0c0;
 	}
+  ${media.xs`
+    font-size: 0.8rem;
+  `}
 `;
 
 const LogoContainer = styled.div`
@@ -74,11 +79,18 @@ const LogoContainer = styled.div`
 
 const Logo = styled(HeaderLink)`
 	z-index: 1;
+	font-size: 1.2rem;
+  ${media.xs`
+    font-size: 1rem;
+  `}
 `;
 
 const LogoH2 = styled(HeaderLink)`
 	text-align: left;
 	font-size: 0.8rem;
+  ${media.xs`
+    display: none;
+  `}
 `;
 
 const FeatureWrapper = styled('div')`
@@ -87,9 +99,10 @@ const FeatureWrapper = styled('div')`
 
 const ButtonWrapper = styled('div')`
 	width: 100%;
-	display: inline-flex;
+	display: flex;
 	justify-content: flex-end;
 	align-items: center;
+  text-align: center;
 `;
 
 const Index = (props) => {
@@ -97,22 +110,23 @@ const Index = (props) => {
   return (
       <Wrapper>
         <Errors errors={errors || []} />
-        <HeaderContainer>
+        <Navbar>
           <LogoContainer>
-            <Logo to="/">US-Iran Relations</Logo>
-            <LogoH2 to="/">National Narratives, America, Iran, and the Clash of Civilizations</LogoH2>
+            <Logo href="/">US-Iran Relations</Logo>
+            <LogoH2 href="/">National Narratives, America, Iran, and the Clash of Civilizations</LogoH2>
           </LogoContainer>
           <LogoContainer>
             <ButtonWrapper>
+              <HeaderLink href="/phases" mr={(2)}>Phases</HeaderLink>
+              <HeaderLink href="/team" mr={(2)}>Team</HeaderLink>
               <Button href="https://irus.vercel.app/">
                 <Typography color="typoAccent" type="button">
-                  Launch Application
-                  {' '}
+                  Launch App
                 </Typography>
               </Button>
             </ButtonWrapper>
           </LogoContainer>
-        </HeaderContainer>
+        </Navbar>
         <HeaderWrapper>
           <OuterRow rowWidth="wide">
             <Typography type="h5">
