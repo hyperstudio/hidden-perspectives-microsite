@@ -3,11 +3,15 @@ node_modules
 .DS_Store
 .env.local
 
+# secrets
+.env.local
+
 # production
 /out
 
 # now
 now.json
+.vercel
 
 # yarn
 .yarn/*
