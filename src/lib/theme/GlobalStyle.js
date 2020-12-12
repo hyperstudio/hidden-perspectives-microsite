@@ -64,7 +64,7 @@ html {
  */
 body {
   margin: 0;
-  background-color: #f8f6f6;
+  background-color: #fff;
   max-width: 100%;
     overflow-x: hidden;
 }

@@ -80,9 +80,6 @@ const Features = ({ features = featureData }) => {
 
   return [
     <OuterRow key="description" style={{ margin: '0 auto' }}>
-      <Typography type="h2" pt={5}>
-        The Application
-      </Typography>
       <FeatureText {...features[count]} />
     </OuterRow>,
     <SliderWrapper key="slider">

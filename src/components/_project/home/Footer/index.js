@@ -91,7 +91,7 @@ const Footer = ({ contributors, photoUrls }) => {
           </Typography>
           <Persons persons={students} photoUrls={photoUrls} />
           <Typography type="body2" mt="4">
-            Additional design and development in &rsquo;20 by:
+            Additional design and development in 2020 by:
           </Typography>
           <Persons persons={aai} photoUrls={photoUrls} />
           <MobileLogo>
