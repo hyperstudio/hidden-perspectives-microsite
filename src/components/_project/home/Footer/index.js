@@ -15,7 +15,7 @@ const Wrapper = styled('div')`
 	border-top: 1px solid rgba(255, 255, 255, 0.05);
 	background: #141214;
 	width: 100%;
-	margin-top: 100px;
+	margin-top: 5rem;
 	display: flex;
 	justify-content: center;
 	${space}

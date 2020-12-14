@@ -18,7 +18,8 @@ const Wrapper = styled('div')`
 	${media.xs`
 		width: 80vw;
 		padding: 8px;
-		padding-top: 80px;
+		padding-top: 4rem;
+    margin-bottom: -8rem;
 	`};
 `;
 
