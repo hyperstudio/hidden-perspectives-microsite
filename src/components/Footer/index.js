@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { space } from 'styled-system';
-import OuterRow from '../../../Layout/OuterRow';
-import { media } from '../../../../lib/index';
-import Typography from '../../../Typography';
-import Link from '../../../Typography/Link';
+import OuterRow from '../Layout/OuterRow';
+import { media } from '../../lib/index';
+import Typography from '../Typography';
+import Link from '../Typography/Link';
 import Logo from './Logo';
 
 const Section = styled('div')`
