@@ -1,4 +1,5 @@
 import React from 'react';
+import NextLink from 'next/link';
 import styled, { ThemeProvider } from 'styled-components';
 import { space } from 'styled-system';
 import Typography from '../Typography';
@@ -97,19 +98,29 @@ export default function Layout({ children }) {
     <Wrapper>
       <Navbar>
         <LogoContainer>
-          <Logo href="/">US-Iran Relations</Logo>
-          <LogoH2 href="/">National Narratives, America, Iran, and the Clash of Civilizations</LogoH2>
+          <NextLink href="/" passHref>
+            <Logo>US-Iran Relations</Logo>
+          </NextLink>
+          <NextLink href="/" passHref>
+            <LogoH2>National Narratives, America, Iran, and the Clash of Civilizations</LogoH2>
+          </NextLink>
         </LogoContainer>
         <LogoContainer>
           <ButtonWrapper>
-            <HeaderLink href="/phases" mr={(3)}>Timeline</HeaderLink>
-            <HeaderLink href="/essays" mr={(3)}>Essays</HeaderLink>
+            <NextLink href="/phases" passHref>
+              <HeaderLink mr={(3)}>Timeline</HeaderLink>
+            </NextLink>
+            <NextLink href="/essays" passHref>
+              <HeaderLink mr={(3)}>Essays</HeaderLink>
+            </NextLink>
             <Button href="https://irus.vercel.app">
               <Typography color="typoAccent" type="button">
                 Archive
               </Typography>
             </Button>
-            <HeaderLink href="/about" ml={(3)}>About</HeaderLink>
+            <NextLink href="/about" passHref>
+              <HeaderLink ml={(3)}>About</HeaderLink>
+            </NextLink>
           </ButtonWrapper>
         </LogoContainer>
       </Navbar>
