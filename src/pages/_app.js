@@ -1,12 +1,19 @@
 import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
+import Router from 'next/router';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 import { ThemeProvider } from 'styled-components';
 import theme from '../lib/theme';
 import Layout from '../components/Layout';
 import GlobalStyle from '../lib/theme/GlobalStyle';
 
 const description = 'A collaborative exploration tool for analysing the US-IRAN relashionships';
+
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {

@@ -611,6 +611,19 @@ template {
     content: '←';
 }
 
+#nprogress .bar {
+  background: #333;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #333, 0 0 5px #333;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #333;
+  border-left-color: #333;
+}
+
 `;
 
 export default GlobalStyle;
