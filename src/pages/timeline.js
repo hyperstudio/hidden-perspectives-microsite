@@ -30,7 +30,8 @@ const RightColumn = styled('div')`
 `;
 
 const Timeline = (props) => {
-  const { errors } = props;
+  const { errors, phases } = props;
+  const { data } = phases;
   return (
     <Wrapper>
       <Errors errors={errors || []} />
@@ -39,7 +40,9 @@ const Timeline = (props) => {
       </Header>
       <TwoColumn rowWidth="wide">
         <LeftColumn>
-          <div>Left column</div>
+          {data.map((phase) => (
+            <div key={phase.id}>{phase.name}</div>
+          ))}
         </LeftColumn>
         <RightColumn>
           Right column
@@ -48,5 +51,17 @@ const Timeline = (props) => {
     </Wrapper>
   );
 };
+
+export async function getStaticProps() {
+  const res = await fetch(`${process.env.API_URL}/items/phases`) // eslint-disable-line no-undef
+    .catch((err) => ({
+      error: err.message,
+    }));
+  if (!res.error) {
+    const phases = await res.json();
+    return { props: { phases } };
+  } return { props: { errors: [res.error] } };
+}
+
 
 export default Timeline;
