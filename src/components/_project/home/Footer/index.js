@@ -2,11 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { space } from 'styled-system';
 import OuterRow from '../../../Layout/OuterRow';
-import Typography from '../../../Typography';
 import { media } from '../../../../lib/index';
-import Persons from './Persons';
 import Logo from './Logo';
-import { alphabeticalSort } from '../../../../lib/utils/sortUtil';
 
 const Section = styled('div')`
 	display: flex;
@@ -59,48 +56,21 @@ const MobileLogo = styled('div')`
 	`}
 `;
 
-const Footer = ({ contributors, photoUrls }) => {
-  const { data } = contributors;
-  const students = alphabeticalSort(
-    data.filter((person) => person.affiliation === 'fhp'),
-    'name',
-  );
-  const initiators = alphabeticalSort(
-    data.filter((person) => person.role === 'initiator'),
-    'name',
-  );
-  const aai = alphabeticalSort(
-    data.filter((person) => person.affiliation === 'aai'),
-    'name',
-  );
-  return (
-    <Wrapper py={[6, 6, 6]}>
-      <OuterWrapper rowWidth="wide">
-        <Section>
-          <Typography type="body2">This project was initiated by:</Typography>
-          <Persons persons={initiators} photoUrls={photoUrls} />
-          <LogoWrapper>
-            <Logo />
-          </LogoWrapper>
-        </Section>
-        <Section>
-          <Typography type="body2">
-            In close collaboration, this platform was designed, concepted and realized
-            between December &rsquo;18 and February &rsquo;19 by students of the University of
-            Applied Sciences Potsdam:
-          </Typography>
-          <Persons persons={students} photoUrls={photoUrls} />
-          <Typography type="body2" mt="4">
-            Additional design and development in 2020 by:
-          </Typography>
-          <Persons persons={aai} photoUrls={photoUrls} />
-          <MobileLogo>
-            <Logo />
-          </MobileLogo>
-        </Section>
-      </OuterWrapper>
-    </Wrapper>
-  );
-};
+const Footer = () => (
+  <Wrapper py={[6, 6, 6]}>
+    <OuterWrapper rowWidth="wide">
+      <Section>
+        <LogoWrapper>
+          <Logo />
+        </LogoWrapper>
+      </Section>
+      <Section>
+        <MobileLogo>
+          <Logo />
+        </MobileLogo>
+      </Section>
+    </OuterWrapper>
+  </Wrapper>
+);
 
 export default Footer;

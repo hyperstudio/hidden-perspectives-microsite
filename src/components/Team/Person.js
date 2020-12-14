@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Typography from '../../../Typography';
+import Typography from '../Typography';
 
 const Wrapper = styled('a')`
 	display: flex;

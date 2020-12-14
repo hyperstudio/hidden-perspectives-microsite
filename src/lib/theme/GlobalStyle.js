@@ -66,7 +66,6 @@ body {
   margin: 0;
   background-color: #fff;
   max-width: 100%;
-    overflow-x: hidden;
 }
 main {
   display: block;
