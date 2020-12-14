@@ -107,7 +107,7 @@ export default function Layout({ children }) {
         </LogoContainer>
         <LogoContainer>
           <ButtonWrapper>
-            <NextLink href="/phases" passHref>
+            <NextLink href="/timeline" passHref>
               <HeaderLink mr={(3)}>Timeline</HeaderLink>
             </NextLink>
             <NextLink href="/essays" passHref>
@@ -125,7 +125,6 @@ export default function Layout({ children }) {
         </LogoContainer>
       </Navbar>
       {children}
-
       <ThemeProvider theme={dark}>
         <Footer />
       </ThemeProvider>
