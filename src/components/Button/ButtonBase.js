@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { media } from '../../lib/index';
 
 const styles = css`
   display: inline-flex;
@@ -8,24 +7,19 @@ const styles = css`
   justify-content: center;
   position: relative;
   -webkit-tap-highlight-color: transparent;
-  background-color: transparent;
   outline: none;
   border: 0;
   margin: 0;
-  border-radius: 0;
   padding: 0;
   cursor: pointer;
   user-select: none;
   vertical-align: middle;
   text-decoration: none;
   color: inherit;
-  padding: 6px 24px;
-  ${media.xs`
-    padding: 3px 12px;
-  `}
+  padding: 0px 12px;
   height: 32px;
   background-color: rgba(248, 179, 50, 0.45);
-  border-radius: 4px;
+  border-radius: 20px;
   transition: ${(props) => props.theme.animation.create()};
   &:hover {
     background-color: rgba(248, 179, 50, 0.65);

@@ -26,6 +26,7 @@ const FeatureTextWrapper = styled(animated.div)`
 	height: 60px;
 	display: flex;
 	flex-direction: row;
+  margin-top: 1rem;
 	${media.xs`
 		flex-direction: column;
 		> * {
@@ -79,9 +80,6 @@ const Features = ({ features = featureData }) => {
   };
 
   return [
-    <OuterRow key="description" style={{ margin: '0 auto' }}>
-      <FeatureText {...features[count]} />
-    </OuterRow>,
     <SliderWrapper key="slider">
       <Slider {...sliderSettings} afterChange={(index) => setCount(index)} ref={sliderRef}>
         {features.map((feature, index) => (
@@ -95,6 +93,9 @@ const Features = ({ features = featureData }) => {
         ))}
       </Slider>
     </SliderWrapper>,
+    <OuterRow key="description" style={{ margin: '0 auto' }}>
+      <FeatureText {...features[count]} />
+    </OuterRow>,
   ];
 };
 

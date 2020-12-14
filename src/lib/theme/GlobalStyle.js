@@ -433,7 +433,7 @@ template {
 .slick-dots
 {
     position: absolute;
-    bottom: -25px;
+    bottom: 0px;
 
     display: block;
 
@@ -502,7 +502,7 @@ template {
     text-align: center;
 
     opacity: .25;
-    color: white;
+    color: black;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -510,7 +510,7 @@ template {
 .slick-dots li.slick-active button:before
 {
     opacity: .75;
-    color: white;
+    color: black;
 }
 
 
@@ -578,11 +578,11 @@ template {
 
 .slick-prev
 {
-    left: -25px;
+    left: 0;
 }
 [dir='rtl'] .slick-prev
 {
-    right: -25px;
+    right: 25px;
     left: auto;
 }
 .slick-prev:before
@@ -596,12 +596,12 @@ template {
 
 .slick-next
 {
-    right: -25px;
+    right: 25px;
 }
 [dir='rtl'] .slick-next
 {
     right: auto;
-    left: -25px;
+    left: 0;
 }
 .slick-next:before
 {
