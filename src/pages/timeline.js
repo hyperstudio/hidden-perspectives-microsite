@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ReactHtmlParser from 'react-html-parser';
 import Typography from '../components/Typography';
@@ -47,10 +47,16 @@ const TimelineLink = styled('div')`
 `;
 
 const Timeline = (props) => {
-  const { errors, phases } = props;
+  const { errors, phases, questions } = props;
   const { data } = phases;
+  const qData = questions.data;
 
   const [phaseState, setPhaseState] = useState({ summary: 'Please select a timeline entry.' });
+  const [questionState, setQuestionState] = useState([]);
+
+  useEffect(() => {
+    setQuestionState(qData.filter((q) => q.phase_id === phaseState.id));
+  }, [phaseState]);
 
   return (
     <Wrapper>
@@ -87,6 +93,18 @@ const Timeline = (props) => {
             </>
           )}
           <Typography type="body2" id="timeline">{ReactHtmlParser(phaseState.summary)}</Typography>
+          <Typography type="body1">Framing Questions</Typography>
+          {questionState.length > 0 && (
+            <ol>
+              {questionState.map((question) => (
+                <li key={question.id}>
+                  <Typography type="body2">{question.value}</Typography>
+                </li>
+              ))}
+            </ol>
+          )}
+          <Typography type="body1">Documents</Typography>
+          {phaseState.documents && phaseState.documents.map((doc) => <Typography type="body2">{doc}</Typography>)}
         </RightColumn>
       </TwoColumn>
     </Wrapper>
@@ -100,7 +118,15 @@ export async function getStaticProps() {
     }));
   if (!res.error) {
     const phases = await res.json();
-    return { props: { phases } };
+    const qRes = await fetch(`${process.env.API_URL}/items/questions?sort=phase_id`) // eslint-disable-line no-undef
+      .catch((err) => ({
+        error: err.message,
+      }));
+    if (!qRes.error) {
+      const questions = await qRes.json();
+      return { props: { phases, questions } };
+    }
+    return { props: { phases, errors: [qRes.error] } };
   } return { props: { errors: [res.error] } };
 }
 
