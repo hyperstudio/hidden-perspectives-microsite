@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import ReactHtmlParser from 'react-html-parser';
 import Typography from '../components/Typography';
 import Errors from '../components/Errors';
 import OuterRow from '../components/Layout/OuterRow';
@@ -24,14 +25,33 @@ const TwoColumn = styled(OuterRow)`
 
 const LeftColumn = styled('div')`
   flex-basis: 33%;
+  border-right: 1px solid rgb(222, 226, 230);
+  padding: 1rem 2rem 1rem 0;
 `;
 const RightColumn = styled('div')`
   flex-basis: 66%;
+  padding-left: 2rem;
+  padding-top: 1rem;
+`;
+
+const TimelineLink = styled('div')`
+  opacity: 0.65;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  &.active,
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 const Timeline = (props) => {
   const { errors, phases } = props;
   const { data } = phases;
+
+  const [phaseState, setPhaseState] = useState({ summary: 'Please select a timeline entry.' });
+
   return (
     <Wrapper>
       <Errors errors={errors || []} />
@@ -40,12 +60,33 @@ const Timeline = (props) => {
       </Header>
       <TwoColumn rowWidth="wide">
         <LeftColumn>
-          {data.map((phase) => (
-            <div key={phase.id}>{phase.name}</div>
-          ))}
+          <ul id="phases">
+            {data.map((phase) => (
+              <li key={phase.id}>
+                <TimelineLink
+                  href="timeline#"
+                  onClick={() => setPhaseState(phase)}
+                  className={phaseState.id === phase.id ? 'active' : ''}
+                >
+                  <Typography type="lidate">
+                    {`${phase.start_date.split('-')[0]}–${phase.end_date.split('-')[0]}`}
+                  </Typography>
+                  <Typography type="li">
+                    {phase.name}
+                  </Typography>
+                </TimelineLink>
+              </li>
+            ))}
+          </ul>
         </LeftColumn>
         <RightColumn>
-          Right column
+          {phaseState.start_date && (
+            <>
+              <Typography type="lidate">{`${phaseState.start_date.split('-')[0]}–${phaseState.end_date.split('-')[0]}`}</Typography>
+              <Typography type="h4">{phaseState.name}</Typography>
+            </>
+          )}
+          <Typography type="body2" id="timeline">{ReactHtmlParser(phaseState.summary)}</Typography>
         </RightColumn>
       </TwoColumn>
     </Wrapper>
@@ -53,7 +94,7 @@ const Timeline = (props) => {
 };
 
 export async function getStaticProps() {
-  const res = await fetch(`${process.env.API_URL}/items/phases`) // eslint-disable-line no-undef
+  const res = await fetch(`${process.env.API_URL}/items/phases?sort=start_date`) // eslint-disable-line no-undef
     .catch((err) => ({
       error: err.message,
     }));

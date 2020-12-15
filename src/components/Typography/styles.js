@@ -128,12 +128,29 @@ export const button = css`
 	padding: 0;
 `;
 
+export const li = css`
+  ${base};
+  line-height: 1.5;
+  font-size: 1rem;
+  letter-spacing: 0.35px;
+`;
+
+export const lidate = css`
+  ${base};
+  line-height: 1.5;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.35px;
+`;
+
 export default {
   h1,
   h2,
   h3,
   h4,
   h5,
+  li,
+  lidate,
   subtitle1,
   subtitle2,
   body1,

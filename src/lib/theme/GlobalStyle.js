@@ -89,6 +89,11 @@ pre {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 /* Text-level semantics
    ========================================================================== */
 /**
