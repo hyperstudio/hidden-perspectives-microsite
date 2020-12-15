@@ -4,41 +4,57 @@ import ReactHtmlParser from 'react-html-parser';
 import Typography from '../components/Typography';
 import Errors from '../components/Errors';
 import OuterRow from '../components/Layout/OuterRow';
+import { media } from '../lib';
 
 const Wrapper = styled('div')`
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
   min-height: calc(100vh - 7rem - 5rem - 64px - 46.5px);
 `;
 
 const Header = styled(OuterRow)`
   width: 100%;
+	${media.sm`
+    text-align: center;
+	`}
 `;
 
 const TwoColumn = styled(OuterRow)`
   display: flex;
   flex-direction: row;
   width: 100%;
+	${media.sm`
+		flex-direction: column;
+	`}
 `;
 
 const LeftColumn = styled('div')`
   flex-basis: 33%;
   border-right: 1px solid rgb(222, 226, 230);
   padding: 1rem 2rem 1rem 0;
+	${media.sm`
+    padding: 1rem 1rem 1rem 2rem;
+    border-right: 0;
+    border-bottom: 1px solid rgb(222, 226, 230);
+	`}
 `;
 const RightColumn = styled('div')`
   flex-basis: 66%;
   padding-left: 2rem;
   padding-top: 1rem;
+	${media.sm`
+    padding: 1rem 1rem 1rem 2rem;
+  `}
 `;
 
 const TimelineLink = styled('div')`
   opacity: 0.65;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
+  gap: 5%;
   cursor: pointer;
   &.active,
   &:hover {

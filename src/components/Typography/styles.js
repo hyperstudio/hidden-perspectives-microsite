@@ -133,6 +133,8 @@ export const li = css`
   line-height: 1.5;
   font-size: 1rem;
   letter-spacing: 0.35px;
+  flex-basis: 70%;
+  margin-bottom: 0.5rem;
 `;
 
 export const lidate = css`
