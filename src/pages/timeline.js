@@ -91,7 +91,9 @@ const Timeline = (props) => {
                   className={phaseState.id === phase.id ? 'active' : ''}
                 >
                   <Typography type="lidate">
-                    {`${phase.start_date.split('-')[0]}–${phase.end_date.split('-')[0]}`}
+                    {phase.end_date
+                      ? `${phase.start_date.split('-')[0]}–${phase.end_date.split('-')[0]}`
+                      : `${phase.start_date.split('-')[0]}`}
                   </Typography>
                   <Typography type="li">
                     {phase.name}
@@ -104,7 +106,11 @@ const Timeline = (props) => {
         <RightColumn>
           {phaseState.start_date && (
             <>
-              <Typography type="lidate">{`${phaseState.start_date.split('-')[0]}–${phaseState.end_date.split('-')[0]}`}</Typography>
+              <Typography type="lidate">
+                {phaseState.end_date
+                  ? `${phaseState.start_date.split('-')[0]}–${phaseState.end_date.split('-')[0]}`
+                  : `${phaseState.start_date.split('-')[0]}`}
+              </Typography>
               <Typography type="h4">{phaseState.name}</Typography>
               {phaseState.subtitle && (
                 <Typography type="subtitle1">{phaseState.subtitle}</Typography>
