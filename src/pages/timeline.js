@@ -106,21 +106,30 @@ const Timeline = (props) => {
             <>
               <Typography type="lidate">{`${phaseState.start_date.split('-')[0]}–${phaseState.end_date.split('-')[0]}`}</Typography>
               <Typography type="h4">{phaseState.name}</Typography>
+              {phaseState.subtitle && (
+                <Typography type="subtitle1">{phaseState.subtitle}</Typography>
+              )}
             </>
           )}
           <Typography type="body2" id="timeline">{ReactHtmlParser(phaseState.summary)}</Typography>
-          <Typography type="body1">Framing Questions</Typography>
           {questionState.length > 0 && (
-            <ol>
-              {questionState.map((question) => (
-                <li key={question.id}>
-                  <Typography type="body2">{question.value}</Typography>
-                </li>
-              ))}
-            </ol>
+            <>
+              <Typography type="body1">Framing Questions</Typography>
+              <ol>
+                {questionState.map((question) => (
+                  <li key={question.id}>
+                    <Typography type="body2">{question.value}</Typography>
+                  </li>
+                ))}
+              </ol>
+            </>
           )}
-          <Typography type="body1">Documents</Typography>
-          {phaseState.documents && phaseState.documents.map((doc) => <Typography type="body2">{doc}</Typography>)}
+          {phaseState.documents && (
+            <>
+              <Typography type="body1">Documents</Typography>
+              {phaseState.documents.map((doc) => <Typography type="body2">{doc}</Typography>)}
+            </>
+          )}
         </RightColumn>
       </TwoColumn>
     </Wrapper>

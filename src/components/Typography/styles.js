@@ -74,11 +74,11 @@ export const h6 = css`
 
 export const subtitle1 = css`
 	${base};
-	line-height: 16px;
+	line-height: 1.25;
 	font-size: 18px;
 	font-weight: 600;
 	letter-spacing: 0.35px;
-	margin: 0;
+  margin: -1rem 0 2rem 0;
 `;
 
 export const subtitle2 = css`
