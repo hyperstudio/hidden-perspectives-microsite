@@ -83,7 +83,7 @@ const Timeline = (props) => {
       <TwoColumn rowWidth="wide">
         <LeftColumn>
           <ul id="phases">
-            {data.map((phase) => (
+            {data && data.map((phase) => (
               <li key={phase.id}>
                 <TimelineLink
                   href="timeline#"
