@@ -11,6 +11,11 @@ const Section = styled('div')`
 	display: flex;
 	flex-direction: column;
 	position: relative;
+  margin-top: ${({ side }) => (side === 'right' ? '31px' : '0')};
+  ${media.xs`
+    margin-top: 0;
+    padding-top: 1rem;
+  `}
 	${space}
 `;
 
@@ -60,7 +65,7 @@ const Team = ({ contributors, photoUrls }) => {
           </Typography>
           <Persons persons={aai} photoUrls={photoUrls} />
         </Section>
-        <Section pt={(6)}>
+        <Section pt={(5)} side="right">
           <Typography type="body2">
             In close collaboration, this platform was designed, concepted and realized
             between December &rsquo;18 and February &rsquo;19 by students of the University of
