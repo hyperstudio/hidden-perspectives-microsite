@@ -3,28 +3,31 @@ import styled from 'styled-components';
 import ReactHtmlParser from 'react-html-parser';
 import Typography from '../components/Typography';
 import Errors from '../components/Errors';
-import OuterRow from '../components/Layout/OuterRow';
 import { media } from '../lib';
 
 const Wrapper = styled('div')`
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
   min-height: calc(100vh - 7rem - 5rem - 64px - 46.5px);
 `;
 
-const Header = styled(OuterRow)`
-  width: 100%;
+const Header = styled('div')`
+  width: 90%;
+  > * {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 	${media.sm`
     text-align: center;
 	`}
 `;
 
-const TwoColumn = styled(OuterRow)`
+const TwoColumn = styled('div')`
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 90%;
 	${media.sm`
 		flex-direction: column;
 	`}
@@ -33,7 +36,7 @@ const TwoColumn = styled(OuterRow)`
 const LeftColumn = styled('div')`
   flex-basis: 33%;
   border-right: 1px solid rgb(222, 226, 230);
-  padding: 1rem 2rem 1rem 0;
+  padding: 1rem 2rem 1rem 1rem;
 	${media.sm`
     padding: 1rem 1rem 1rem 2rem;
     border-right: 0;
@@ -43,6 +46,7 @@ const LeftColumn = styled('div')`
 const RightColumn = styled('div')`
   flex-basis: 66%;
   padding-left: 2rem;
+  padding-right: 1rem;
   padding-top: 1rem;
 	${media.sm`
     padding: 1rem 1rem 1rem 2rem;
@@ -65,7 +69,7 @@ const TimelineLink = styled('div')`
 const Timeline = (props) => {
   const { errors, phases, questions } = props;
   const { data } = phases;
-  const qData = questions.data;
+  const qData = questions.data || [];
 
   const [phaseState, setPhaseState] = useState({ summary: 'Please select a timeline entry.' });
   const [questionState, setQuestionState] = useState([]);
@@ -91,9 +95,9 @@ const Timeline = (props) => {
                   className={phaseState.id === phase.id ? 'active' : ''}
                 >
                   <Typography type="lidate">
-                    {phase.end_date
-                      ? `${phase.start_date.split('-')[0]}–${phase.end_date.split('-')[0]}`
-                      : `${phase.start_date.split('-')[0]}`}
+                    {phase.end_year
+                      ? `${phase.start_year.split('-')[0]}–${phase.end_year.split('-')[0]}`
+                      : `${phase.start_year.split('-')[0]}`}
                   </Typography>
                   <Typography type="li">
                     {phase.name}
@@ -104,12 +108,12 @@ const Timeline = (props) => {
           </ul>
         </LeftColumn>
         <RightColumn>
-          {phaseState.start_date && (
+          {phaseState.start_year && (
             <>
               <Typography type="lidate">
-                {phaseState.end_date
-                  ? `${phaseState.start_date.split('-')[0]}–${phaseState.end_date.split('-')[0]}`
-                  : `${phaseState.start_date.split('-')[0]}`}
+                {phaseState.end_year
+                  ? `${phaseState.start_year.split('-')[0]}–${phaseState.end_year.split('-')[0]}`
+                  : `${phaseState.start_year.split('-')[0]}`}
               </Typography>
               <Typography type="h4">{phaseState.name}</Typography>
               {phaseState.subtitle && (
@@ -143,7 +147,7 @@ const Timeline = (props) => {
 };
 
 export async function getStaticProps() {
-  const res = await fetch(`${process.env.API_URL}/items/phases?sort=start_date`) // eslint-disable-line no-undef
+  const res = await fetch(`${process.env.API_URL}/items/phases?sort=start_year`) // eslint-disable-line no-undef
     .catch((err) => ({
       error: err.message,
     }));
