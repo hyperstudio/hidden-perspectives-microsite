@@ -71,7 +71,7 @@ const Timeline = (props) => {
   const { data } = phases;
   const qData = questions.data || [];
 
-  const [phaseState, setPhaseState] = useState({ summary: 'Please select a timeline entry.' });
+  const [phaseState, setPhaseState] = useState({});
   const [questionState, setQuestionState] = useState([]);
 
   useEffect(() => {
@@ -108,6 +108,20 @@ const Timeline = (props) => {
           </ul>
         </LeftColumn>
         <RightColumn>
+          {!phaseState.start_year && (
+            <>
+              <Typography type="lidate">About This Timeline</Typography>
+              <Typography type="h4">Phases of the U.S.-Iran Relationship</Typography>
+              <Typography type="body2" id="timeline">
+                This timeline was sourced from briefing books compiled for a series of critical oral
+                history conferences on the U.S.-Iran Relationship. Edited summaries and additional
+                details provided by John Tirman.
+              </Typography>
+              <Typography type="body2">
+                To get started, select an entry from the timeline on the left.
+              </Typography>
+            </>
+          )}
           {phaseState.start_year && (
             <>
               <Typography type="lidate">
@@ -119,9 +133,9 @@ const Timeline = (props) => {
               {phaseState.subtitle && (
                 <Typography type="subtitle1">{phaseState.subtitle}</Typography>
               )}
+              <Typography type="body2" id="timeline">{ReactHtmlParser(phaseState.summary)}</Typography>
             </>
           )}
-          <Typography type="body2" id="timeline">{ReactHtmlParser(phaseState.summary)}</Typography>
           {questionState.length > 0 && (
             <>
               <Typography type="body1">Framing Questions</Typography>

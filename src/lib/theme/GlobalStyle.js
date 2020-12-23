@@ -94,6 +94,9 @@ ul {
   padding: 0;
   margin: 0;
 }
+ol {
+  font-family: 'Suisse Intl';
+}
 /* Text-level semantics
    ========================================================================== */
 /**
