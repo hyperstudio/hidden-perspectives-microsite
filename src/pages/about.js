@@ -100,11 +100,7 @@ export async function getStaticProps() {
     const photoUrls = {};
     await Promise.all(contributors.data.map(async (contributor) => {
       const { photo } = contributor;
-      const photoRes = photo
-        ? await fetch(`${process.env.API_URL}/files/${photo}`) // eslint-disable-line no-undef
-        : await fetch(`${process.env.API_URL}/files/11`); // eslint-disable-line no-undef
-      const { data } = await photoRes.json();
-      const photoUrl = `${process.env.API_URL}/assets/${data.private_hash}`;
+      const photoUrl = `${process.env.API_URL}/assets/${photo}`;
       photoUrls[contributor.photo] = photoUrl;
     }));
     return {
