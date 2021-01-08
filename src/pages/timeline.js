@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ReactHtmlParser from 'react-html-parser';
 import Typography from '../components/Typography';
+import Document from '../components/Document';
 import Errors from '../components/Errors';
 import { media } from '../lib';
 
@@ -66,16 +67,29 @@ const TimelineLink = styled('div')`
   }
 `;
 
-const Timeline = (props) => {
-  const { errors, phases, questions } = props;
+const DocumentContainer = styled('div')`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+
+const Timeline = ({
+  errors, phases, questions, documents, thumbnailUrls,
+}) => {
   const { data } = phases;
   const qData = questions.data || [];
+  const docData = documents.data || [];
 
   const [phaseState, setPhaseState] = useState({});
   const [questionState, setQuestionState] = useState([]);
+  const [documentState, setDocumentState] = useState([]);
 
   useEffect(() => {
     setQuestionState(qData.filter((q) => q.phase_id === phaseState.id));
+  }, [phaseState]);
+
+  useEffect(() => {
+    setDocumentState(docData.filter((d) => d.phase_id === phaseState.id));
   }, [phaseState]);
 
   return (
@@ -91,7 +105,9 @@ const Timeline = (props) => {
               <li key={phase.id}>
                 <TimelineLink
                   href="timeline#"
-                  onClick={() => setPhaseState(phase)}
+                  onClick={() => {
+                    setPhaseState(phase);
+                  }}
                   className={phaseState.id === phase.id ? 'active' : ''}
                 >
                   <Typography type="lidate">
@@ -148,10 +164,21 @@ const Timeline = (props) => {
               </ol>
             </>
           )}
-          {phaseState.documents && (
+          {documentState.length > 0 && (
             <>
               <Typography type="body1">Documents</Typography>
-              {phaseState.documents.map((doc) => <Typography type="body2">{doc}</Typography>)}
+              <DocumentContainer>
+                {documentState.map((doc) => (
+                  <Document
+                    key={doc.archive_id}
+                    id={doc.archive_id}
+                    date={doc.publication_date}
+                    title={doc.title}
+                    author={doc.author}
+                    thumbnail={thumbnailUrls[doc.thumbnail]}
+                  />
+                ))}
+              </DocumentContainer>
             </>
           )}
         </RightColumn>
@@ -173,7 +200,25 @@ export async function getStaticProps() {
       }));
     if (!qRes.error) {
       const questions = await qRes.json();
-      return { props: { phases, questions } };
+      const docRes = await fetch(`${process.env.API_URL}/items/documents?sort=phase_id`) // eslint-disable-line no-undef
+        .catch((err) => ({
+          error: err.message,
+        }));
+      if (!docRes.error) {
+        const documents = await docRes.json();
+        const thumbnailUrls = {};
+        await Promise.all(documents.data.map(async (doc) => {
+          const { thumbnail } = doc;
+          const thumbnailUrl = `${process.env.API_URL}/assets/${thumbnail}`;
+          thumbnailUrls[doc.thumbnail] = thumbnailUrl;
+        }));
+        return {
+          props: {
+            phases, questions, documents, thumbnailUrls,
+          },
+        };
+      }
+      return { props: { phases, questions, errors: [docRes.error] } };
     }
     return { props: { phases, errors: [qRes.error] } };
   } return { props: { errors: [res.error] } };

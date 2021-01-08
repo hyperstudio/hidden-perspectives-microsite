@@ -16,7 +16,7 @@ const variantMapping = {
   subtitle1: 'h6',
   subtitle2: 'h6',
   body1: 'p',
-  body2: 'p',
+  body2: 'span',
   button: 'span',
 };
 
