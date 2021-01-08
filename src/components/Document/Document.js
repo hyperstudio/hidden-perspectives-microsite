@@ -5,6 +5,7 @@ const Document = ({
   id, date, title, author, thumbnail,
 }) => {
   const DocLink = styled('a')`
+    margin-top: 0.5rem;
     text-decoration: none;
     color: #505050;
     &:hover {
@@ -14,16 +15,18 @@ const Document = ({
     > * {
     transition: ${(props) => props.theme.animation.create()};
     }
-    &:hover > * {
+    &:hover * {
       color: black;
     }
     &:hover [class*="DocTitle"] {
       background-color: rgb(255, 209, 139);
       color: rgb(143, 75, 0);
+      box-shadow: -5px 0 0 rgb(255, 209, 139), 5px 0 0 rgb(255, 209, 139);
     }
     &:hover [class*="DocAuthor"] {
       background-color: rgb(255, 209, 139);
       color: rgb(143, 75, 0);
+      box-shadow: -5px 0 0 rgb(255, 209, 139), 5px 0 0 rgb(255, 209, 139);
     }
 
     &:hover [class*="DocImage"] {
@@ -34,7 +37,7 @@ const Document = ({
     width: 125px;
     margin: 0 1rem 1rem 0;
     transition: ${(props) => props.theme.animation.create()};
-    > * {
+    * {
     transition: ${(props) => props.theme.animation.create()};
     }
   `;
@@ -57,24 +60,31 @@ const Document = ({
     font-size: 0.75rem;
     letter-spacing: 0.35px;
   `;
-  const DocTitle = styled(Typography)`
+  const DocTitle = styled('span')`
+	  font-family: 'Suisse Intl';
     color: #505050;
     &:hover { color: rgb(143, 75, 0); }
-    margin-top: 0.5rem;
-    padding-top: 0;
-    padding-bottom: 0.05rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.3rem;
     line-height: 1.5;
     font-size: 0.85rem;
     letter-spacing: 0.35px;
+    box-shadow: -5px 0 0 white, 5px 0 0 white;
   `;
-  const DocAuthor = styled(Typography)`
+  const DocAuthor = styled('span')`
+    font-family: 'Suisse Intl';
     color: #505050;
-    display: inline-block;
     margin-top: auto;
     margin-bottom: 0;
-    line-height: 1.2;
+    padding-top: 0.1rem;
+    padding-bottom: 0.2rem;
+    line-height: 1.5;
     font-size: 0.75rem;
     letter-spacing: 0.35px;
+    box-shadow: -5px 0 0 white, 5px 0 0 white;
+  `;
+  const TitleDiv = styled('div')`
+    margin: 0.7rem 0 0.5rem 0;
   `;
 
   return (
@@ -84,7 +94,9 @@ const Document = ({
       <DocDate>{date}</DocDate>
       <DocCard>
         <DocImage img={thumbnail} />
-        <DocTitle>{title}</DocTitle>
+        <TitleDiv>
+          <DocTitle>{title}</DocTitle>
+        </TitleDiv>
         <DocAuthor>{author}</DocAuthor>
       </DocCard>
     </DocLink>
