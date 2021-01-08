@@ -71,6 +71,7 @@ const DocumentContainer = styled('div')`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: flex-start;
 `;
 
 const Timeline = ({
@@ -166,7 +167,7 @@ const Timeline = ({
           )}
           {documentState.length > 0 && (
             <>
-              <Typography type="body1">Documents</Typography>
+              <Typography type="body1">Selected Documents</Typography>
               <DocumentContainer>
                 {documentState.map((doc) => (
                   <Document

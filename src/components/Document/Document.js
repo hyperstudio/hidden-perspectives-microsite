@@ -6,40 +6,51 @@ const Document = ({
 }) => {
   const DocLink = styled('a')`
     text-decoration: none;
-    color: black;
+    color: #505050;
     &:hover {
-      color: gray;
+      color: black;
     }
     transition: ${(props) => props.theme.animation.create()};
     > * {
     transition: ${(props) => props.theme.animation.create()};
     }
     &:hover > * {
-      color: gray;
+      color: black;
+    }
+    &:hover [class*="DocTitle"] {
+      background-color: rgb(255, 209, 139);
+      color: rgb(143, 75, 0);
+    }
+    &:hover [class*="DocAuthor"] {
+      background-color: rgb(255, 209, 139);
+      color: rgb(143, 75, 0);
+    }
+
+    &:hover [class*="DocImage"] {
+      border: 1px solid #999999;
     }
   `;
   const DocCard = styled('div')`
-    height: 190px;
     width: 125px;
-    padding: 0.5rem;
-    margin: 0 0.5rem 1rem 0;
-    display: flex;
-    flex-direction: column;
-    border-radius: 4px;
-    border: 1px solid rgb(133, 136, 139);
-    background-image: url(${({ img }) => img});
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 80%;
+    margin: 0 1rem 1rem 0;
     transition: ${(props) => props.theme.animation.create()};
     > * {
     transition: ${(props) => props.theme.animation.create()};
     }
-    &:hover > * {
-      color: gray;
-    }
+  `;
+  const DocImage = styled('div')`
+    padding: 0.5rem;
+    background-image: url(${({ img }) => img});
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    &:hover { border: 1px solid #999999; }
+    height: 120px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
   `;
   const DocDate = styled(Typography)`
+    color: #505050;
     margin-top: 0;
     margin-bottom: 0.25rem;
     line-height: 1;
@@ -47,22 +58,21 @@ const Document = ({
     letter-spacing: 0.35px;
   `;
   const DocTitle = styled(Typography)`
-    margin-top: 0;
-    background-color: rgba(255,255,255,0.9);
+    color: #505050;
+    &:hover { color: rgb(143, 75, 0); }
+    margin-top: 0.5rem;
     padding-top: 0;
     padding-bottom: 0.05rem;
     line-height: 1.5;
     font-size: 0.85rem;
     letter-spacing: 0.35px;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;  
-    overflow: hidden;
   `;
   const DocAuthor = styled(Typography)`
+    color: #505050;
+    display: inline-block;
     margin-top: auto;
     margin-bottom: 0;
-    line-height: 1;
+    line-height: 1.2;
     font-size: 0.75rem;
     letter-spacing: 0.35px;
   `;
@@ -72,7 +82,8 @@ const Document = ({
       href={`${process.env.NEXT_PUBLIC_ARCHIVE_URL}/document/context/${id}`}
     >
       <DocDate>{date}</DocDate>
-      <DocCard img={thumbnail}>
+      <DocCard>
+        <DocImage img={thumbnail} />
         <DocTitle>{title}</DocTitle>
         <DocAuthor>{author}</DocAuthor>
       </DocCard>
