@@ -4,6 +4,7 @@ import ReactHtmlParser from 'react-html-parser';
 import Typography from '../components/Typography';
 import Document from '../components/Document';
 import Errors from '../components/Errors';
+import OuterRow from '../components/Layout/OuterRow';
 import { media } from '../lib';
 
 const Wrapper = styled('div')`
@@ -14,21 +15,21 @@ const Wrapper = styled('div')`
   min-height: calc(100vh - 7rem - 5rem - 64px - 46.5px);
 `;
 
-const Header = styled('div')`
-  width: 90%;
-  > * {
+const Header = styled(OuterRow)`
+  width: 100%;
+  /* > * {
     padding-left: 1rem;
     padding-right: 1rem;
-  }
+  } */
 	${media.sm`
     text-align: center;
 	`}
 `;
 
-const TwoColumn = styled('div')`
+const TwoColumn = styled(OuterRow)`
   display: flex;
   flex-direction: row;
-  width: 90%;
+  width: 100%;
 	${media.sm`
 		flex-direction: column;
 	`}
@@ -37,7 +38,7 @@ const TwoColumn = styled('div')`
 const LeftColumn = styled('div')`
   flex-basis: 33%;
   border-right: 1px solid rgb(222, 226, 230);
-  padding: 1rem 2rem 1rem 1rem;
+  padding: 1rem 2rem 1rem 0;
 	${media.sm`
     padding: 1rem 1rem 1rem 2rem;
     border-right: 0;
@@ -47,7 +48,7 @@ const LeftColumn = styled('div')`
 const RightColumn = styled('div')`
   flex-basis: 66%;
   padding-left: 2rem;
-  padding-right: 1rem;
+  /* padding-right: 1rem; */
   padding-top: 1rem;
 	${media.sm`
     padding: 1rem 1rem 1rem 2rem;
@@ -59,7 +60,17 @@ const TimelineLink = styled('div')`
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 5%;
+  gap: 0%;
+  border-left: ${({ subphase }) => (subphase ? '2px dotted rgb(222, 226, 230)' : '')};
+  div:nth-child(1) {
+    padding-left: ${({ subphase }) => (subphase ? '0.5rem' : '')};
+    flex-basis: 27%;
+    font-weight: ${({ subphase }) => (subphase ? 'normal' : '')};;
+  }
+  div:nth-child(2) {
+    flex-basis: 65%;
+    font-weight: ${({ subphase }) => (!subphase ? 'bold' : '')};;
+  }
   cursor: pointer;
   &.active,
   &:hover {
@@ -109,6 +120,7 @@ const Timeline = ({
                   onClick={() => {
                     setPhaseState(phase);
                   }}
+                  subphase={phase.subphase === true}
                   className={phaseState.id === phase.id ? 'active' : ''}
                 >
                   <Typography type="lidate">
