@@ -181,16 +181,18 @@ const Timeline = ({
             <>
               <Typography type="body1">Selected Documents</Typography>
               <DocumentContainer>
-                {documentState.map((doc) => (
-                  <Document
-                    key={doc.archive_id}
-                    id={doc.archive_id}
-                    date={doc.publication_date}
-                    title={doc.title}
-                    author={doc.author}
-                    thumbnail={thumbnailUrls[doc.thumbnail]}
-                  />
-                ))}
+                {documentState
+                  .sort((a, b) => new Date(a.publication_date) - new Date(b.publication_date))
+                  .map((doc) => (
+                    <Document
+                      key={doc.archive_id}
+                      id={doc.archive_id}
+                      date={doc.publication_date}
+                      title={doc.title}
+                      author={doc.author}
+                      thumbnail={thumbnailUrls[doc.thumbnail]}
+                    />
+                  ))}
               </DocumentContainer>
             </>
           )}
