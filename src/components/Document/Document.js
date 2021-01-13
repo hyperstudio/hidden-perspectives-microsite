@@ -8,6 +8,10 @@ const Document = ({
     margin-top: 0.5rem;
     text-decoration: none;
     color: #505050;
+    * { 
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
     &:hover {
       color: black;
     }
