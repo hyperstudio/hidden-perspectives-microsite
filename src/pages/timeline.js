@@ -4,7 +4,7 @@ import ReactHtmlParser from 'react-html-parser';
 import Typography from '../components/Typography';
 import Document from '../components/Document';
 import Errors from '../components/Errors';
-import OuterRow from '../components/Layout/OuterRow';
+// import OuterRow from '../components/Layout/OuterRow';
 import { media } from '../lib';
 
 const Wrapper = styled('div')`
@@ -15,21 +15,21 @@ const Wrapper = styled('div')`
   min-height: calc(100vh - 7rem - 5rem - 64px - 46.5px);
 `;
 
-const Header = styled(OuterRow)`
-  width: 100%;
-  /* > * {
+const Header = styled('div')`
+  width: 90%;
+  > * {
     padding-left: 1rem;
     padding-right: 1rem;
-  } */
+  }
 	${media.sm`
     text-align: center;
 	`}
 `;
 
-const TwoColumn = styled(OuterRow)`
+const TwoColumn = styled('div')`
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 90%;
 	${media.sm`
 		flex-direction: column;
 	`}
@@ -38,7 +38,7 @@ const TwoColumn = styled(OuterRow)`
 const LeftColumn = styled('div')`
   flex-basis: 33%;
   border-right: 1px solid rgb(222, 226, 230);
-  padding: 1rem 2rem 1rem 0;
+  padding: 1rem 2rem 1rem 1rem;
 	${media.sm`
     padding: 1rem 1rem 1rem 2rem;
     border-right: 0;
@@ -48,7 +48,7 @@ const LeftColumn = styled('div')`
 const RightColumn = styled('div')`
   flex-basis: 66%;
   padding-left: 2rem;
-  /* padding-right: 1rem; */
+  padding-right: 1rem;
   padding-top: 1rem;
 	${media.sm`
     padding: 1rem 1rem 1rem 2rem;
