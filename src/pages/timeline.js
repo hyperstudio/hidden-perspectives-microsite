@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ReactHtmlParser from 'react-html-parser';
+import Scroll from 'react-scroll';
 import Typography from '../components/Typography';
 import Document from '../components/Document';
 import Errors from '../components/Errors';
-// import OuterRow from '../components/Layout/OuterRow';
 import { media } from '../lib';
+
+const ScrollDiv = Scroll.ScrollElement;
+
+const ScrolDivElement = ScrollDiv((props) => {
+  const { children, parentBindings } = props;
+  return (
+    <div {...props} ref={(el) => { parentBindings.domNode = el; }} name="rightColumn">
+      {children}
+    </div>
+  );
+});
 
 const Wrapper = styled('div')`
   display: flex;
@@ -21,7 +32,7 @@ const Header = styled('div')`
     padding-left: 1rem;
     padding-right: 1rem;
   }
-	${media.sm`
+	${media.md`
     text-align: center;
 	`}
 `;
@@ -30,7 +41,7 @@ const TwoColumn = styled('div')`
   display: flex;
   flex-direction: row;
   width: 90%;
-	${media.sm`
+	${media.md`
 		flex-direction: column;
 	`}
 `;
@@ -39,18 +50,18 @@ const LeftColumn = styled('div')`
   flex-basis: 33%;
   border-right: 1px solid rgb(222, 226, 230);
   padding: 1rem 2rem 1rem 1rem;
-	${media.sm`
+	${media.md`
     padding: 1rem 1rem 1rem 2rem;
     border-right: 0;
     border-bottom: 1px solid rgb(222, 226, 230);
 	`}
 `;
-const RightColumn = styled('div')`
+const RightColumn = styled(ScrolDivElement)`
   flex-basis: 66%;
   padding-left: 2rem;
   padding-right: 1rem;
   padding-top: 1rem;
-	${media.sm`
+	${media.md`
     padding: 1rem 1rem 1rem 2rem;
   `}
 `;
@@ -64,7 +75,7 @@ const TimelineLink = styled('div')`
   border-left: ${({ subphase }) => (subphase ? '2px dotted rgb(222, 226, 230)' : '')};
   div:nth-child(1) {
     padding-left: ${({ subphase }) => (subphase ? '0.5rem' : '')};
-    flex-basis: 27%;
+    flex-basis: 31%;
     font-weight: ${({ subphase }) => (subphase ? 'normal' : '')};;
   }
   div:nth-child(2) {
@@ -96,6 +107,8 @@ const Timeline = ({
   const [questionState, setQuestionState] = useState([]);
   const [documentState, setDocumentState] = useState([]);
 
+  const scroll = Scroll.scroller;
+
   useEffect(() => {
     setQuestionState(qData.filter((q) => q.phase_id === phaseState.id));
   }, [phaseState]);
@@ -119,6 +132,11 @@ const Timeline = ({
                   href="timeline#"
                   onClick={() => {
                     setPhaseState(phase);
+                    scroll.scrollTo('rightColumn', {
+                      duration: 500,
+                      delay: 100,
+                      smooth: true,
+                    });
                   }}
                   subphase={phase.subphase === true}
                   className={phaseState.id === phase.id ? 'active' : ''}
