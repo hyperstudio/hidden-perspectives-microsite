@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Typography from '../Typography';
 
 const Document = ({
-  id, date, title, author, thumbnail,
+  id, date, title, author, thumbnail, type,
 }) => {
   const DocLink = styled('a')`
     margin-top: 0.5rem;
@@ -93,7 +93,9 @@ const Document = ({
 
   return (
     <DocLink
-      href={`${process.env.NEXT_PUBLIC_ARCHIVE_URL}/document/context/${id}`}
+      href={type === 'essay'
+        ? `${process.env.NEXT_PUBLIC_ARCHIVE_URL}/document/original/${id}`
+        : `${process.env.NEXT_PUBLIC_ARCHIVE_URL}/document/context/${id}`}
     >
       <DocDate>{date}</DocDate>
       <DocCard>
