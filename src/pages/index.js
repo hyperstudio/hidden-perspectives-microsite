@@ -30,7 +30,10 @@ const Index = (props) => {
         </Typography>
       </OuterRow>
       <FeatureWrapper>
-        <Features featureData={featureData} imageUrls={imageUrls} />
+        <Features
+          featureData={featureData.sort((a, b) => a.order - b.order)}
+          imageUrls={imageUrls}
+        />
       </FeatureWrapper>
     </Wrapper>
   );

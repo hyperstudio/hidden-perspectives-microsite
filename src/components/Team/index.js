@@ -59,7 +59,7 @@ const Team = ({ contributors, photoUrls }) => {
         <Section>
           <Typography type="h4">Team</Typography>
           <Typography type="body2">This project was initiated by:</Typography>
-          <Persons persons={initiators} photoUrls={photoUrls} />
+          <Persons persons={initiators.sort((a, b) => a.order - b.order)} photoUrls={photoUrls} />
           <Typography type="body2" mt="4">
             Additional design and development in 2020 by:
           </Typography>
