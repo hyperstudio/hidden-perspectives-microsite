@@ -6,6 +6,7 @@ import Typography from '../components/Typography';
 import Document from '../components/Document';
 import Errors from '../components/Errors';
 import { media } from '../lib';
+import { transformText } from '../lib/utils/textUtil';
 
 const ScrollDiv = Scroll.ScrollElement;
 
@@ -97,7 +98,7 @@ const DocumentContainer = styled('div')`
 `;
 
 const Timeline = ({
-  errors, phases, questions, documents, thumbnailUrls,
+  errors, phases, questions, documents, thumbnailUrls, phaseText,
 }) => {
   const { data } = phases;
   const qData = questions.data || [];
@@ -121,7 +122,7 @@ const Timeline = ({
     <Wrapper>
       <Errors errors={errors || []} />
       <Header rowWidth="wide">
-        <Typography type="h4" id="timeline">Timeline</Typography>
+        <Typography type="h4" id="timelineHeader">Timeline</Typography>
       </Header>
       <TwoColumn rowWidth="wide">
         <LeftColumn>
@@ -158,15 +159,7 @@ const Timeline = ({
           {!phaseState.start_year && (
             <>
               <Typography type="lidate">About This Timeline</Typography>
-              <Typography type="h4">Phases of the U.S.-Iran Relationship</Typography>
-              <Typography type="body2" id="timeline">
-                This timeline was sourced from briefing books compiled for a series of critical oral
-                history conferences on the U.S.-Iran Relationship. Edited summaries and additional
-                details provided by John Tirman.
-              </Typography>
-              <Typography type="body2">
-                To get started, select an entry from the timeline on the left.
-              </Typography>
+              {phaseText && ReactHtmlParser(phaseText, { transform: transformText })}
             </>
           )}
           {phaseState.start_year && (
@@ -180,7 +173,7 @@ const Timeline = ({
               {phaseState.subtitle && (
                 <Typography type="subtitle1">{phaseState.subtitle}</Typography>
               )}
-              <Typography type="body2" id="timeline">{ReactHtmlParser(phaseState.summary)}</Typography>
+              <Typography type="body2">{ReactHtmlParser(phaseState.summary)}</Typography>
             </>
           )}
           {questionState.length > 0 && (
@@ -227,33 +220,44 @@ export async function getStaticProps() {
     }));
   if (!res.error) {
     const phases = await res.json();
-    const qRes = await fetch(`${process.env.API_URL}/items/questions?sort=phase_id`) // eslint-disable-line no-undef
+    const phaseTextRes = await fetch(`${process.env.API_URL}/items/phase_page_text`) // eslint-disable-line no-undef
       .catch((err) => ({
         error: err.message,
       }));
-    if (!qRes.error) {
-      const questions = await qRes.json();
-      const docRes = await fetch(`${process.env.API_URL}/items/documents?sort=phase_id`) // eslint-disable-line no-undef
+    if (!phaseTextRes.error) {
+      const phaseJson = await phaseTextRes.json();
+      const phaseText = phaseJson.data.text;
+      const qRes = await fetch(`${process.env.API_URL}/items/questions?sort=phase_id`) // eslint-disable-line no-undef
         .catch((err) => ({
           error: err.message,
         }));
-      if (!docRes.error) {
-        const documents = await docRes.json();
-        const thumbnailUrls = {};
-        await Promise.all(documents.data.map(async (doc) => {
-          const { thumbnail } = doc;
-          const thumbnailUrl = `${process.env.API_URL}/assets/${thumbnail}`;
-          thumbnailUrls[doc.thumbnail] = thumbnailUrl;
-        }));
+      if (!qRes.error) {
+        const questions = await qRes.json();
+        const docRes = await fetch(`${process.env.API_URL}/items/documents?sort=phase_id`) // eslint-disable-line no-undef
+          .catch((err) => ({
+            error: err.message,
+          }));
+        if (!docRes.error) {
+          const documents = await docRes.json();
+          const thumbnailUrls = {};
+          await Promise.all(documents.data.map(async (doc) => {
+            const { thumbnail } = doc;
+            const thumbnailUrl = `${process.env.API_URL}/assets/${thumbnail}`;
+            thumbnailUrls[doc.thumbnail] = thumbnailUrl;
+          }));
+          return {
+            props: {
+              phases, questions, documents, thumbnailUrls, phaseText,
+            },
+          };
+        }
         return {
           props: {
-            phases, questions, documents, thumbnailUrls,
+            phases, questions, phaseText, errors: [docRes.error],
           },
         };
-      }
-      return { props: { phases, questions, errors: [docRes.error] } };
-    }
-    return { props: { phases, errors: [qRes.error] } };
+      } return { props: { phases, phaseText, errors: [qRes.error] } };
+    } return { props: { phases, errors: [phaseTextRes.error] } };
   } return { props: { errors: [res.error] } };
 }
 

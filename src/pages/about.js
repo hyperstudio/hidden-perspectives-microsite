@@ -1,19 +1,9 @@
 import React from 'react';
-import ReactHtmlParser, { convertNodeToElement } from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
 import OuterRow from '../components/Layout/OuterRow';
-import Typography from '../components/Typography';
 import Errors from '../components/Errors';
 import Team from '../components/Team';
-
-const transformAboutText = (node, index) => {
-  const { children, type, name } = node;
-  if (type === 'tag' && name === 'h4') {
-    return <Typography type="h4">{children.map((child) => convertNodeToElement(child, index, transformAboutText))}</Typography>;
-  } if (type === 'tag' && name === 'p') {
-    return <Typography type="body1">{children.map((child) => convertNodeToElement(child, index, transformAboutText))}</Typography>;
-  }
-  return undefined;
-};
+import { transformText } from '../lib/utils/textUtil';
 
 const About = (props) => {
   const {
@@ -23,7 +13,7 @@ const About = (props) => {
     <>
       <Errors errors={errors || []} />
       <OuterRow rowWidth="narrow">
-        {aboutData && ReactHtmlParser(aboutData, { transform: transformAboutText })}
+        {aboutData && ReactHtmlParser(aboutData, { transform: transformText })}
       </OuterRow>
       <Team contributors={contributors} photoUrls={photoUrls} />
     </>

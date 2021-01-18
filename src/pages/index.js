@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ReactHtmlParser from 'react-html-parser';
 import Errors from '../components/Errors';
 import Typography from '../components/Typography';
 import OuterRow from '../components/Layout/OuterRow';
@@ -17,15 +18,13 @@ const FeatureWrapper = styled('div')`
 `;
 
 const Index = (props) => {
-  const { errors } = props;
+  const { errors, blurb } = props;
   return (
     <Wrapper>
       <Errors errors={errors || []} />
       <OuterRow rowWidth="wide">
         <Typography type="h5" mb={(2)} mt={(5)}>
-          US-Iran Relations is an interactive digital archive consisting of
-          documents and events relating to the U.S.-Iran relationship’s history since
-          the 1978&ndash;1979 Iranian revolution.
+          {blurb && ReactHtmlParser(blurb)}
         </Typography>
       </OuterRow>
       <FeatureWrapper>
@@ -34,5 +33,17 @@ const Index = (props) => {
     </Wrapper>
   );
 };
+
+export async function getStaticProps() {
+  const res = await fetch(`${process.env.API_URL}/items/landing_page_text`) // eslint-disable-line no-undef
+    .catch((err) => ({
+      error: err.message,
+    }));
+  if (!res.error) {
+    const blurbJson = await res.json();
+    const blurb = blurbJson.data.text;
+    return { props: { blurb } };
+  } return { props: { errors: [res.error] } };
+}
 
 export default Index;
