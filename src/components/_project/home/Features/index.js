@@ -7,8 +7,6 @@ import Typography from '../../../Typography';
 import OuterRow from '../../../Layout/OuterRow';
 import { media } from '../../../../lib';
 
-import featureData from './data';
-
 const sliderSettings = {
   dots: true,
   centerMode: true,
@@ -39,7 +37,7 @@ const SliderWrapper = styled('div')`
 	width: 100vw;
 `;
 
-const FeatureText = ({ header, label }) => {
+const FeatureText = ({ title, description }) => {
   const props = useSpring({
     to: { opacity: 1 },
     from: { opacity: 0, color: 'red' },
@@ -55,14 +53,15 @@ const FeatureText = ({ header, label }) => {
           opacity: 0.5,
         }}
       >
-        {header}
+        {title}
       </Typography>
-      <Typography>{label}</Typography>
+      <Typography>{description}</Typography>
     </FeatureTextWrapper>
   );
 };
 
-const Features = ({ features = featureData }) => {
+const Features = ({ featureData, imageUrls }) => {
+  const features = featureData;
   const [count, setCount] = useState(0);
   const sliderRef = useRef(null);
 
@@ -85,9 +84,10 @@ const Features = ({ features = featureData }) => {
         {features.map((feature, index) => (
           <Feature
             {...feature}
-            key={feature.key}
-            featureId={feature.key}
+            key={feature.id}
+            featureId={feature.id}
             active={index === count}
+            image={imageUrls[feature.image]}
             onClick={() => handleFeatureClick(index, count)}
           />
         ))}

@@ -36,12 +36,12 @@ const Img = styled('img')`
 `;
 
 const Feature = ({
-  padding, gif, onClick,
+  padding, image, onClick,
 }) => (
   <Wrapper pb={[5, 2]} pt={padding} onClick={onClick}>
     <OuterRow rowWidth="wide" style={{ width: '100%', padding: 0 }}>
       <VideoWrapper>
-        <Img src={gif} />
+        <Img src={image} />
       </VideoWrapper>
     </OuterRow>
   </Wrapper>

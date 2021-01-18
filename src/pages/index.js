@@ -18,7 +18,9 @@ const FeatureWrapper = styled('div')`
 `;
 
 const Index = (props) => {
-  const { errors, blurb } = props;
+  const {
+    errors, blurb, featureData, imageUrls,
+  } = props;
   return (
     <Wrapper>
       <Errors errors={errors || []} />
@@ -28,22 +30,36 @@ const Index = (props) => {
         </Typography>
       </OuterRow>
       <FeatureWrapper>
-        <Features />
+        <Features featureData={featureData} imageUrls={imageUrls} />
       </FeatureWrapper>
     </Wrapper>
   );
 };
 
 export async function getStaticProps() {
-  const res = await fetch(`${process.env.API_URL}/items/landing_page_text`) // eslint-disable-line no-undef
+  const blurbRes = await fetch(`${process.env.API_URL}/items/landing_page_text`) // eslint-disable-line no-undef
     .catch((err) => ({
       error: err.message,
     }));
-  if (!res.error) {
-    const blurbJson = await res.json();
+  if (!blurbRes.error) {
+    const blurbJson = await blurbRes.json();
     const blurb = blurbJson.data.text;
-    return { props: { blurb } };
-  } return { props: { errors: [res.error] } };
+    const carouselRes = await fetch(`${process.env.API_URL}/items/carousel_slides`) // eslint-disable-line no-undef
+      .catch((err) => ({
+        error: err.message,
+      }));
+    if (!carouselRes.error) {
+      const carouselJson = await carouselRes.json();
+      const featureData = carouselJson.data;
+      const imageUrls = {};
+      await Promise.all(featureData.map(async (slide) => {
+        const { image } = slide;
+        const photoUrl = `${process.env.API_URL}/assets/${image}`;
+        imageUrls[slide.image] = photoUrl;
+      }));
+      return { props: { blurb, featureData, imageUrls } };
+    } return { props: { blurb, errors: [carouselRes.error] } };
+  } return { props: { errors: [blurbRes.error] } };
 }
 
 export default Index;
