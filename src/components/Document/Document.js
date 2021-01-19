@@ -96,6 +96,7 @@ const Document = ({
       href={type === 'essay'
         ? `${process.env.NEXT_PUBLIC_ARCHIVE_URL}/document/original/${id}`
         : `${process.env.NEXT_PUBLIC_ARCHIVE_URL}/document/context/${id}`}
+      target="_blank"
     >
       <DocDate>{date}</DocDate>
       <DocCard>
