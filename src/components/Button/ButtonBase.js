@@ -29,7 +29,9 @@ const styles = css`
 	}
 `;
 
-const ButtonBase = ({ children, href, onClick }) => {
+const ButtonBase = ({
+  children, href, onClick, target,
+}) => {
   const tag = href ? 'a' : 'button';
 
   const Component = styled(tag)`
@@ -37,7 +39,7 @@ const ButtonBase = ({ children, href, onClick }) => {
   `;
 
   return href
-    ? <Component href={href}>{children}</Component>
+    ? <Component href={href} target={target}>{children}</Component>
     : <Component onClick={onClick}>{children}</Component>;
 };
 

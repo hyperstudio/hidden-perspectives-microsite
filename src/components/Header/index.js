@@ -100,7 +100,7 @@ const Header = () => (
         <NextLink href="/essays" passHref>
           <HeaderLink mr={(3)}>Essays</HeaderLink>
         </NextLink>
-        <Button href={process.env.NEXT_PUBLIC_ARCHIVE_URL}>
+        <Button href={process.env.NEXT_PUBLIC_ARCHIVE_URL} target="_blank">
           <Typography color="typoAccent" type="button">
             Archive
           </Typography>

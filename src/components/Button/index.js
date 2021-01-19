@@ -3,9 +3,9 @@ import React from 'react';
 import ButtonBase from './ButtonBase';
 
 const Button = ({
-  children, href, onClick,
+  children, href, onClick, target,
 }) => (
-  <ButtonBase href={href} onClick={onClick}>
+  <ButtonBase href={href} onClick={onClick} target={target}>
     {children}
   </ButtonBase>
 );
